@@ -1,0 +1,268 @@
+#about {
+    // @extend %fullHW;
+    min-height: 100vh;
+
+    // stripe slider
+    .strip {
+        width: 100%;
+        background-color: $bg;
+        overflow: hidden;
+        .strip-slide {
+            @include py(4px, 4px);
+            // border: 2px solid black;
+            border: 0.5px solid $mainHeading;
+            border-left: none;
+            border-right: none;
+            display: flex;
+            flex-flow: row wrap;
+            width: 7000px;
+            column-gap: 12px;
+            @include resp($md) {
+                @include py(6px, 6px);
+                column-gap: 15px;
+            }
+            @include resp($xl) {
+                @include py(8px, 8px);
+                column-gap: 20px;
+            }
+            @include resp($xxl) {
+                @include py(10px, 10px);
+                border-width: 2px;
+            }
+            .slider {
+                @extend %center;
+                // column-gap: 20px;
+                column-gap: 12px;
+                @include resp($md) {
+                    column-gap: 15px;
+                }
+                @include resp($xl) {
+                    column-gap: 20px;
+                }
+                p {
+                    font-family: "mak";
+                    font-weight: 100;
+                    // font-size: 20px;
+                    font-size: 8px;
+                    color: $mainHeading;
+                    @include resp($xs) {
+                        font-size: 11px;
+                    }
+                    @include resp($sm) {
+                        font-size: 13px;
+                    }
+                    @include resp($xl) {
+                        font-size: 16px;
+                    }
+                    @include resp($xxl) {
+                        font-size: 18px;
+                    }
+                    @include resp($mxl) {
+                        font-size: 20px;
+                    }
+                }
+                .icon {
+                    // width: 25px;
+                    width: 10px;
+                    @include resp($xs) {
+                        width: 12px;
+                    }
+                    @include resp($sm) {
+                        width: 15px;
+                    }
+                    @include resp($xl) {
+                        width: 20px;
+                    }
+                    @include resp($xxl) {
+                        width: 25px;
+                    }
+                    @include resp($mxl) {
+                        width: 30px;
+                    }
+                    path {
+                        stroke: $mainHeading;
+                    }
+                }
+            }
+        }
+    }
+
+    // about content
+    .content {
+        width: 100%;
+        height: 100%;
+    }
+    .container {
+        @include py(40px, 60px);
+        .discription {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            margin-top: 50px;
+            @include resp($lg) {
+                flex-flow: row wrap;
+                justify-content: center;
+                // display: grid;
+                // grid-template-columns: 1fr 3fr;
+                column-gap: 80px;
+                // margin-top: 0px;
+            }
+            @include resp($xl) {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                column-gap: 100px;
+            }
+            @include resp($xxl) {
+                column-gap: 100px;
+            }
+            @include resp($mxl) {
+                column-gap: 160px;
+            }
+            .image {
+                width: 185px;
+                height: 185px;
+                @include resp($sm) {
+                    width: 210px;
+                    height: 210px;
+                }
+                @include resp($md) {
+                    width: 250px;
+                    height: 250px;
+                }
+                // @include resp ($lg) {
+                //     width: 280px;
+                //     height: 300px;
+                // }
+                @include resp($xl) {
+                    width: 375px;
+                    height: 375px;
+                }
+                @include resp($xxl) {
+                    width: 435px;
+                    height: 435px;
+                }
+                @include resp($mxl) {
+                    width: 480px;
+                    height: 480px;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .text {
+                font-family: "kurye";
+                font-size: 16px;
+                line-height: 150%;
+                margin-top: 32px;
+                text-align: center;
+                @include resp($sm) {
+                    font-size: 20px;
+                    text-align: left;
+                }
+                @include resp($md) {
+                    font-size: 25px;
+                }
+                @include resp($lg) {
+                    // font-size: 20px;
+                    margin-top: 0px;
+                    max-width: 560px;
+                }
+                @include resp($xl) {
+                    font-size: 30px;
+                    max-width: initial;
+                }
+                @include resp($xxl) {
+                    font-size: 35px;
+                }
+                @include resp($mxl) {
+                    font-size: 40px;
+                }
+                .img {
+                    width: 10px;
+                    height: 15px;
+                    display: inline-block;
+                    @include resp($sm) {
+                        width: 15px;
+                        height: 20px;
+                    }
+                    @include resp($md) {
+                        width: 18px;
+                        height: 25px;
+                    }
+                    @include resp($xl) {
+                        width: 22px;
+                        height: 30px;
+                    }
+                    @include resp($xxl) {
+                        width: 26px;
+                        height: 34px;
+                    }
+                    @include resp($mxl) {
+                        width: 32px;
+                        height: 43px;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        display: inline-block;
+                    }
+                }
+            }
+            // clip-path: circle(50% at 50% 50%);
+        }
+    }
+}
+
+#squre-circle {
+    margin-top: 35px;
+    margin-top: 35px;
+    .wrapper {
+        width: 100%;
+        // height: 200px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+        // position: relative;
+        // &::after {
+        //     content: "";
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        //     width: 100%;
+        //     height: 100%;
+        //     background: #c9cba3;
+        //     filter: blur(50px);
+        // }
+        svg {
+            width: 100%;
+            height: 100%;
+            grid-row: 1/-1;
+            grid-column: 1/-1;
+            position: relative;
+            z-index: 50;
+        }
+        .mask {
+            width: 100%;
+            height: 60%;
+            grid-row: 1/-1;
+            grid-column: 1/-1;
+            background: #c9cba3;
+            filter: blur(20px);
+            @include resp($sm) {
+                height: 50%;
+                filter: blur(50px);
+            }
+            @include resp($md) {
+                height: 40%;
+            }
+            @include resp($xxl) {
+                filter: blur(100px);
+            }
+        }
+    }
+}

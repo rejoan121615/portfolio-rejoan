@@ -1,0 +1,33 @@
+@import "./modules/fonts";
+@import "./modules/variable";
+@import "./modules/mixing";
+@import "./modules/commonStyle";
+
+// section
+@import "./partials/background";
+@import "./partials/main";
+@import "./partials/about";
+
+// skill section
+#skill {
+    height: 100vh;
+    .container {
+        height: 100%;
+        .section-title {
+            padding-top: 45px;
+        }
+    }
+
+    // svg
+    .svg-wrapper {
+        @extend %center;
+        svg {
+            min-width: 300px;
+            width: 75%;
+            max-width: 600px;
+            @include resp ($mxl) {
+              max-width: 750px;
+            }
+        }
+    }
+}
