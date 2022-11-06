@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+%fullHW {
+    width: 100vw;
+    height: 100vh;
+}
+
+%center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-box {
+    position: relative;
+    z-index: 500;
+}
+
+$respList: (
+    $sm: 540,
+    $md: 720,
+    $lg: 960,
+    $xl: 1140,
+    $xxl: 1320,
+    $mxl: 1700,
+);
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    @include resp($sm) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@each $screen, $maxScreen in $respList {
+    .container {
+        @include resp($screen) {
+            max-width: $maxScreen + px;
+        }
+    }
+}
+
+.section-title {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    column-gap: 10px;
+    @include fluid-type(320px, 768px, 30px, 65px);
+    h1 {
+        font-family: mak;
+        font-size: 30px;
+        @include resp($xs) {
+            font-size: 35px;
+        }
+        @include resp($sm) {
+            font-size: 40px;
+        }
+        @include resp($md) {
+            font-size: 45px;
+        }
+        @include resp($lg) {
+            font-size: 50px;
+        }
+        @include resp($xl) {
+            font-size: 55px;
+        }
+        @include resp($xxl) {
+            font-size: 65px;
+        }
+        @include resp($mxl) {
+            font-size: 70px;
+        }
+    }
+    .gradient {
+        background: linear-gradient(
+            90deg,
+            #ff6360 0%,
+            #2dc6fb 72.92%,
+            #ffe198 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        font-family: "quanty";
+        font-style: normal;
+        font-weight: 400;
+        display: inline-block;
+        margin-top: -8px;
+        @include resp($xs) {
+            font-size: 35px;
+            margin-top: -10px;
+        }
+        @include resp($sm) {
+            font-size: 40px;
+            margin-top: -13px;
+        }
+        @include resp($md) {
+            font-size: 45px;
+        }
+        @include resp($lg) {
+            font-size: 50px;
+        }
+        @include resp($xl) {
+            font-size: 55px;
+        }
+        @include resp($xxl) {
+            font-size: 65px;
+        }
+        @include resp($mxl) {
+            font-size: 70px;
+        }
+    }
+}
+
+.coating-parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    .coating-child {
+        grid-row: 1/-1;
+        grid-column: 1/-1;
+    }
+}
+

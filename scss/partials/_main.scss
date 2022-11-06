@@ -1,0 +1,94 @@
+#main {
+    %gridCover {
+        grid-row: 1/-1;
+        grid-column: 1/-1;
+    }
+    @extend %fullHW;
+    // overflow: hidden;
+    // overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    // svg container
+    .svg-container {
+        @extend %gridCover;
+        position: relative;
+        svg {
+            position: absolute;
+            // right: -1100px;
+            // top: -1300px;
+            // width: 2500px;
+            width: 850px;
+            top: -35px;
+            right: -450px;
+            // @include resp($sm) {
+            //     right: -60vw;
+            //     top: -12vw;
+            //     width: 135vw;
+            // }
+            @include resp($md) {
+                top: -75vw;
+                right: -70vw;
+                width: 160vw;
+            }
+            @include resp($xl) {
+                max-width: 2300px;
+            }
+            @include resp($xxl) {
+                top: -1200px;
+                right: -1000px;
+                // max-width: 2500px;
+            }
+            @include resp($mxl) {
+                max-width: 2450px;
+                right: -1000px;
+                top: -1320px;
+            }
+        }
+    }
+
+    // name section
+    .name-container {
+        @extend %fullHW;
+        @extend %gridCover;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .name-wrap {
+            width: 70%;
+            max-width: 520px;
+            @include resp ($lg) {
+                max-width: initial;
+                width: 55%;
+            }
+            @include resp ($xxl) {
+                width: 60%;
+            }
+            @include resp ($mxl) {
+                max-width: 1080px;
+            }
+            h1 {
+                font-family: "brolimo";
+                // font-size: 200px;
+                color: $mainHeading;
+                text-transform: uppercase;
+                font-weight: 100;
+                // font-size: 50px;
+                @include fluid-type(320px, 767px, 50px, 100px);
+                // &:last-child {
+                // margin-left: 330px;
+                // margin-left: 50px;
+                // }
+                @include resp($lg) {
+                    @include fluid-type(992px, 1800px, 100px, 200px);
+                }
+                &:first-child {
+                }
+                &:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

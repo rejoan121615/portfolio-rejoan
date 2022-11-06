@@ -1,0 +1,38 @@
+.bg-color-mask {
+    width: 100vw;
+    height: 100vh;
+    background: $bg;
+    position: fixed;
+    left: 0;
+    top: 0;
+    @extend %center;
+    .item-wrap {
+        width: 200px;
+        height: 500px;
+        position: relative;
+        
+    }
+    .item {
+        // $size: 541px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        filter: blur(50px);
+        // filter: blur(150px);
+        &:nth-child(1) {
+            background: #7fdeff;
+            // left: 392px;
+            // top: 259px;
+        }
+        &:nth-child(2) {
+            background: #ff6360;
+            // left: 797px;
+            // top: 259px;
+        }
+        &:nth-child(3) {
+            background: #ffe198;
+            // left: 1202px;
+            // top: 259px;
+        }
+    }
+}
