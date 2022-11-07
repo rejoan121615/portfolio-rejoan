@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"sass --watch scss:css\" \"browser-sync\""
+    "start": "concurrently \"sass --watch scss:css\" \"browser-sync\"",
+    "sass": "sass --watch scss:css"
   },
   "keywords": [],
   "author": "",

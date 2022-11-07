@@ -25,8 +25,88 @@
             min-width: 300px;
             width: 75%;
             max-width: 600px;
-            @include resp ($mxl) {
-              max-width: 750px;
+            @include resp($mxl) {
+                max-width: 750px;
+            }
+        }
+    }
+}
+// projects
+#projects {
+    .container {
+        padding-top: 40px;
+        .section-title {
+            column-gap: 2px;
+        }
+    }
+
+    // project list
+    .project-list {
+        margin-top: 100px;
+        @extend .coating-parent;
+        .background {
+            @extend .coating-child;
+            @extend %center;
+            svg {
+            }
+        }
+        .project-wrap {
+            @extend .coating-child;
+        }
+    }
+}
+
+// project list
+.pro-card {
+    @extend .coating-parent;
+    width: 100%;
+    max-width: 320px;
+    img {
+        display: inline-block;
+    }
+    .bg,
+    .details {
+        @extend .coating-child;
+        width: 100%;
+    }
+    .bg {
+        width: 80%;
+        // display: none;
+        img {
+            width: 100%;
+        }
+    }
+
+    .details {
+        width: 90%;
+        margin-left: auto;
+        margin-top: 45px;
+        h1 {
+            font-family: "brolimo";
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 10px;
+
+        }
+        .img-wrap {
+            // height: 220px;
+            img {
+                width: 100%;
+            }
+        }
+        .link {
+            text-align: center;
+            margin-top: -24px;
+            a {
+                display: inline-flex;
+                background-color: $mainHeading;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                @extend %center;
+                img {
+                    width: 32%;
+                }
             }
         }
     }
