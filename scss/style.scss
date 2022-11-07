@@ -47,15 +47,22 @@
         .background {
             @extend .coating-child;
             @extend %center;
+            // display: none;
             svg {
+                width: 80px;
+                height: 100%;
             }
         }
         .project-wrap {
             @extend .coating-child;
             display: grid;
             justify-items: center;
-            margin-top: 100px;
-            @include resp ($sm) {   
+            // margin-top: 100px;
+            row-gap: 80px;
+            @include resp($sm) {
+            }
+            @include resp($md) {
+                row-gap: 120px;
             }
             .pro-card {
                 &:nth-child(even) {
@@ -63,7 +70,6 @@
                 }
                 &:nth-child(odd) {
                     justify-self: start;
-
                 }
             }
         }
@@ -75,10 +81,10 @@
     @extend .coating-parent;
     width: 100%;
     max-width: 320px;
-    @include resp ($md) {
+    @include resp($md) {
         max-width: 400px;
     }
-    @include resp ($mxl) {
+    @include resp($mxl) {
         max-width: 500px;
     }
     img {
@@ -101,10 +107,10 @@
         width: 90%;
         margin-left: auto;
         margin-top: 45px;
-        @include resp ($md) {
+        @include resp($md) {
             margin-top: 55px;
         }
-        @include resp ($mxl) {
+        @include resp($mxl) {
             margin-top: 65px;
         }
         h1 {
@@ -112,10 +118,10 @@
             font-size: 20px;
             font-weight: 400;
             margin-bottom: 10px;
-            @include resp ($md) {
+            @include resp($md) {
                 font-size: 25px;
             }
-            @include resp ($mxl) {
+            @include resp($mxl) {
                 font-size: 35px;
             }
         }
@@ -128,6 +134,9 @@
         .link {
             text-align: center;
             margin-top: -24px;
+            @include resp ($xxl) {
+                margin-top: -30px;
+            }
             a {
                 display: inline-flex;
                 background-color: $mainHeading;
@@ -137,6 +146,48 @@
                 @extend %center;
                 img {
                     width: 32%;
+                }
+                @include resp($xxl) {
+                    width: 55px;
+                    height: 55px;
+                }
+            }
+        }
+    }
+    &:nth-child(even) {
+        .bg {
+            margin-left: auto;
+        }
+        .details {
+            margin-left: initial;
+            h1 {
+                text-align: right;
+            }
+            .link {
+                @include resp($md) {
+                    text-align: left;
+                    margin-left: -30px;
+                }
+                a {
+                    @include resp ($md) {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+        }
+    }
+    &:nth-child(odd) {
+        .details {
+            // margin-left: auto;
+            .link {
+                @include resp($md) {
+                    text-align: right;
+                    margin-right: -30px;
+                }
+                a {
+                    @include resp ($md) {
+                        transform: rotate(-90deg);
+                    }
                 }
             }
         }
