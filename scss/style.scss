@@ -52,6 +52,20 @@
         }
         .project-wrap {
             @extend .coating-child;
+            display: grid;
+            justify-items: center;
+            margin-top: 100px;
+            @include resp ($sm) {   
+            }
+            .pro-card {
+                &:nth-child(even) {
+                    justify-self: end;
+                }
+                &:nth-child(odd) {
+                    justify-self: start;
+
+                }
+            }
         }
     }
 }
@@ -61,6 +75,12 @@
     @extend .coating-parent;
     width: 100%;
     max-width: 320px;
+    @include resp ($md) {
+        max-width: 400px;
+    }
+    @include resp ($mxl) {
+        max-width: 500px;
+    }
     img {
         display: inline-block;
     }
@@ -81,12 +101,23 @@
         width: 90%;
         margin-left: auto;
         margin-top: 45px;
+        @include resp ($md) {
+            margin-top: 55px;
+        }
+        @include resp ($mxl) {
+            margin-top: 65px;
+        }
         h1 {
             font-family: "brolimo";
             font-size: 20px;
             font-weight: 400;
             margin-bottom: 10px;
-
+            @include resp ($md) {
+                font-size: 25px;
+            }
+            @include resp ($mxl) {
+                font-size: 35px;
+            }
         }
         .img-wrap {
             // height: 220px;
