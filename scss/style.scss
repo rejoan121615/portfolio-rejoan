@@ -134,7 +134,7 @@
         .link {
             text-align: center;
             margin-top: -24px;
-            @include resp ($xxl) {
+            @include resp($xxl) {
                 margin-top: -30px;
             }
             a {
@@ -169,7 +169,7 @@
                     margin-left: -30px;
                 }
                 a {
-                    @include resp ($md) {
+                    @include resp($md) {
                         transform: rotate(90deg);
                     }
                 }
@@ -185,10 +185,68 @@
                     margin-right: -30px;
                 }
                 a {
-                    @include resp ($md) {
+                    @include resp($md) {
                         transform: rotate(-90deg);
                     }
                 }
+            }
+        }
+    }
+}
+
+// animation
+
+@keyframes slide-left {
+    from {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    to {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+@keyframes slide-right {
+    from {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+// project slider
+#project-slider {
+    .slider-wrap {
+        // overflow: hidden;
+    }
+    .slider {
+        // overflow-x: hidden;
+        display: flex;
+        flex-wrap: nowrap;
+        column-gap: 10px;
+        margin-bottom: 10px;
+        @include resp ($lg) {
+            column-gap: 15px;
+            margin-bottom: 15px;
+        }
+        &:first-child {
+            animation: slide-left 50s linear infinite;
+        }
+        &:last-child {
+            animation: slide-right 50s linear infinite;
+            margin-left: -50px;
+        }
+        img {
+            flex-shrink: 0;
+            width: 100px;
+            @include resp ($sm) {
+                width: 120px;
+            }
+            @include resp ($md) {
+                width: 150px;
             }
         }
     }
