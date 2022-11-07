@@ -266,22 +266,44 @@
 
         }
     }
+    .coating-parent{
+        display: block;
+    }
 
     .content {
-        position: relative;
-        z-index: 30;
         display: grid;
-        grid-template: 
-            'upwork form' 220px
-            'github form' 220px
-            'facebook form' 220px / 220px 1fr;
-        ;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "upwork github facebook"
+                            "contact contact contact"
+                            "contact contact contact";
+
+        @include resp($lg) {
+            grid-template-areas: "upwork contact contact"
+                                "github contact contact"
+                                "facebook contact contact";
+        }
         .box-btn {
             width: 220px;
             height: 220px;
             border-radius: 30px;
             display: inline-block;
-
+        }
+        .upwork{
+            background-color: aqua;
+            grid-area: upwork;
+        }
+        .github{
+            background-color: bisque;
+            grid-area: github;
+        }
+        .facebook{
+            background-color: yellow;
+            grid-area: facebook;
+        }
+        .contact-form{
+            background-color: pink;
+            grid-area: contact;
         }
     }
 
