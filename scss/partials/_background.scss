@@ -13,19 +13,46 @@ $yellow: #ffe198;
         // width: 200px;
         // height: 400px;
         display: grid;
-        grid-template: 
-                        "red" 200px
-                        "blue" 200px
-                        "yellow" 200px / 200px
-        ;
-        
+        grid-template:
+            "red" 200px
+            "blue" 200px
+            "yellow" 200px / 200px;
+
         position: relative;
+        @include resp($md) {
+            grid-template:
+                "red . ." 220px
+                ". blue ." 220px
+                ". . yellow" 220px / 220px 220px 220px;
+        }
+        @include resp ($xxl) {
+            grid-template:  
+                " blue red yellow" 400px / 400px 400px 400px;
+            ;
+        }
+        @include resp ($mxl) {
+            grid-template: "blue red yellow" 500px / 500px 500px 500px;
+        }
         & > div {
             width: 250px;
             height: 250px;
             border-radius: 50%;
             filter: blur(60px);
             justify-self: center;
+            @include resp ($md) {
+                width: 280px;
+                height: 280px;
+                filter: blur(80px);
+            }
+            @include resp ($xxl) {
+                width: 450px;
+                height: 450px;
+            }
+            @include resp ($mxl) {
+                width: 540px;
+                height: 540px;
+                filter: blur(150px);
+            }
         }
         .red {
             align-self: flex-start;

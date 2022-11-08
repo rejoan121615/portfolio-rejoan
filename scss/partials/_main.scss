@@ -45,6 +45,13 @@
                 right: -1000px;
                 top: -1320px;
             }
+            circle {
+                stroke-width: 2px;
+                @include resp ($md) {
+                    stroke-width: 4px;
+                }
+                
+            }
         }
     }
 
