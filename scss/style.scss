@@ -548,6 +548,22 @@ $respList: (
                     font-family: "kurye";
                     font-size: 20px;
                     font-weight: 300;
+
+                    @include resp($md) {
+                        font-size: 25px;
+                    }
+                    @include resp($lg) {
+                        font-size: 27px;
+                    }
+                    @include resp($xl) {
+                        font-size: 32px;
+                    }
+                    @include resp($xxl) {
+                        font-size: 36px;
+                    }
+                    @include resp($mxl) {
+                        font-size: 40px;
+                    }
                 }
 
                 input{
@@ -556,13 +572,96 @@ $respList: (
                     border-bottom: 2px solid $border;
                     padding: 4px 0px;
                     margin-left: 8px;
+
+                    @include resp($md) {
+                        padding: 6px 0px;
+                        margin-left: 15px;
+                    }
+                    @include resp($lg) {
+                        padding: 10px 0px;
+                        margin-left: 20px;
+                    }
+                    @include resp($xl) {
+                        padding: 12px 0px;
+                        margin-left: 25px;
+                    }
+                    @include resp($xxl) {
+                        padding: 14px 0px;
+                        margin-left: 30px;
+                    }
+                    @include resp($mxl) {
+                        padding: 16px 0px;
+                        margin-left: 35px;
+                    }
+                }
+            }
+            .email{
+                input{
+                    width: 221px;
+
+                    @include resp($xs) {
+                        width: 272px;
+                    }
+                    @include resp($sm) {
+                        width: 397px;
+                    }
+                    @include resp($md) {
+                        width: 450px;
+                    }
+                    @include resp($lg) {
+                        width: 625px;
+                    }
+                    @include resp($xl) {
+                        width: 692px;
+                    }
+                    @include resp($xxl) {
+                        width: 821px;
+                    }
+                    @include resp($mxl) {
+                        width: 1170px;
+                    }
                 }
             }
             .message{
                 margin-top: 20px;
+                @include resp($lg) {
+                    margin-top: 25px;
+                }
+                @include resp($xl) {
+                    margin-top: 35px;
+                }
+                @include resp($xxl) {
+                    margin-top: 45px;
+                }
+                @include resp($xxl) {
+                    margin-top: 60px;
+                }
                 .message-input{
                     display: flex;
                     flex-flow: column;
+                    width: 200px;
+
+                    @include resp($xs) {
+                        width: 250px;
+                    }
+                    @include resp($sm) {
+                        width: 376px;
+                    }
+                    @include resp($md) {
+                        width: 430px;
+                    }
+                    @include resp($lg) {
+                        width: 595px;
+                    }
+                    @include resp($xl) {
+                        width: 670px;
+                    }
+                    @include resp($xxl) {
+                        width: 800px;
+                    }
+                    @include resp($mxl) {
+                        width: 1150px;
+                    }
                 }
             }
         }
