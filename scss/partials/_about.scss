@@ -1,94 +1,102 @@
-    .strip {
-        width: 100%;
-        background-color: $bg;
-        overflow: hidden;
-        .strip-slide {
+.strip {
+    width: 100%;
+    background-color: $bg;
+    overflow: hidden;
+    margin-bottom: 50px;
+    @include resp($md) {
+        margin-bottom: 70px;
+    }
+    @include resp($xl) {
+        margin-bottom: 100px;
+    }
+
+    .strip-slide {
+        animation: slide-left 150s linear infinite;
+        @include py(8px, 8px);
+        // border: 2px solid black;
+        border: 0.5px solid $mainHeading;
+        border-left: none;
+        border-right: none;
+        display: flex;
+        flex-flow: row wrap;
+        width: 7000px;
+        column-gap: 12px;
+        @include resp($md) {
+            @include py(6px, 6px);
+            column-gap: 15px;
+        }
+        @include resp($xl) {
             @include py(8px, 8px);
-            // border: 2px solid black;
-            border: 0.5px solid $mainHeading;
-            border-left: none;
-            border-right: none;
-            display: flex;
-            flex-flow: row wrap;
-            width: 7000px;
+            column-gap: 20px;
+        }
+        @include resp($xxl) {
+            @include py(10px, 10px);
+            border-width: 2px;
+        }
+        .slider {
+            @extend %center;
+            // column-gap: 20px;
             column-gap: 12px;
             @include resp($md) {
-                @include py(6px, 6px);
                 column-gap: 15px;
             }
             @include resp($xl) {
-                @include py(8px, 8px);
                 column-gap: 20px;
             }
-            @include resp($xxl) {
-                @include py(10px, 10px);
-                border-width: 2px;
-            }
-            .slider {
-                @extend %center;
-                // column-gap: 20px;
-                column-gap: 12px;
+            p {
+                font-family: "mak";
+                font-weight: 100;
+                font-size: 15px;
+                // font-size: 8px;
+                color: $mainHeading;
                 @include resp($md) {
-                    column-gap: 15px;
+                    font-size: 18px;
                 }
                 @include resp($xl) {
-                    column-gap: 20px;
+                    font-size: 20px;
                 }
-                p {
-                    font-family: "mak";
-                    font-weight: 100;
-                    font-size: 15px;
-                    // font-size: 8px;
-                    color: $mainHeading;
-                    @include resp ($md) {
-                        font-size: 18px;
-                    }
-                    @include resp($xl) {
-                        font-size: 20px;
-                    }
-                    // @include resp($xxl) {
-                    //     font-size: 22px;
-                    // }
-                    @include resp($mxl) {
-                        font-size: 22px;
-                    }
+                // @include resp($xxl) {
+                //     font-size: 22px;
+                // }
+                @include resp($mxl) {
+                    font-size: 22px;
                 }
-                .icon {
-                    // width: 25px;
-                    width: 20px;
-                    @include resp ($lg) {
-                        width: 25px;
-                    }
-                    @include resp($mxl) {
-                        width: 30px;
-                    }
-                    path {
-                        stroke: $mainHeading;
-                    }
+            }
+            .icon {
+                // width: 25px;
+                width: 20px;
+                @include resp($lg) {
+                    width: 25px;
+                }
+                @include resp($mxl) {
+                    width: 30px;
+                }
+                path {
+                    stroke: $mainHeading;
                 }
             }
         }
     }
+}
 #about {
     // @extend %fullHW;
+    // margin-top: 40px;
     min-height: 100vh;
+    @include laptop {
+        margin-top: 60px;
+    }
+    @include resp($mxl) {
+        margin-top: 80px;
+    }
     // stripe slide
     .container {
-        padding-top: 40px;
+        // padding-top: 40px;
         height: 100vh;
         display: grid;
         grid-template:
             "title" 50px
             "content" auto / 1fr;
-            @include resp ($md) {
-                padding-top: 70px;
-            }
-            @include resp ($xl) {
-                padding-top: 100px;
-            }
-            @media only screen and (min-width: 1500px) and (max-height: 750px) {
-                padding-top: 50px;
-            }
+
         .section-title {
             grid-area: title;
         }
@@ -160,7 +168,7 @@
                 line-height: 180%;
                 text-align: center;
                 @include resp($sm) {
-                    // font-size: 20px;
+                    font-size: 22px;
                     text-align: left;
                 }
                 @include resp($md) {
@@ -186,53 +194,51 @@
                     position: relative;
 
                     @include resp($sm) {
-                        width: 15px;
-                        height: 20px;
+                        width: 25px;
                     }
-                    @include resp($md) {
-                        width: 18px;
-                        height: 25px;
-                    }
-                    @include resp($xl) {
-                        width: 22px;
-                        height: 30px;
-                    }
-                    @include resp($xxl) {
-                        width: 26px;
-                        height: 34px;
-                    }
-                    @include resp($mxl) {
-                        width: 32px;
-                        height: 43px;
-                    }
+                    // @include resp($md) {
+                    //     width: 18px;
+                    //     height: 25px;
+                    // }
+                    // @include resp($xl) {
+                    //     width: 22px;
+                    //     height: 30px;
+                    // }
+                    // @include resp($xxl) {
+                    //     width: 26px;
+                    //     height: 34px;
+                    // }
+                    // @include resp($mxl) {
+                    //     width: 32px;
+                    //     height: 43px;
+                    // }
                     img {
-                        
                         width: 20px;
-                    height: 30px;
-                    display: inline-block;
-                    position: absolute;
-                    left: 0px;
-                    bottom: 0;
-                    @include resp($sm) {
-                        width: 15px;
-                        height: 20px;
-                    }
-                    @include resp($md) {
-                        width: 18px;
-                        height: 25px;
-                    }
-                    @include resp($xl) {
-                        width: 22px;
                         height: 30px;
-                    }
-                    @include resp($xxl) {
-                        width: 26px;
-                        height: 34px;
-                    }
-                    @include resp($mxl) {
-                        width: 32px;
-                        height: 43px;
-                    }
+                        display: inline-block;
+                        position: absolute;
+                        left: 0px;
+                        bottom: 0;
+                        // @include resp($sm) {
+                        //     width: 25px;
+                        //     height: 35px;
+                        // }
+                        @include resp($md) {
+                            width: 25px;
+                            height: 35px;
+                        }
+                        @include resp($xl) {
+                            width: 22px;
+                            height: 30px;
+                        }
+                        @include resp($xxl) {
+                            width: 26px;
+                            height: 34px;
+                        }
+                        @include resp($mxl) {
+                            width: 32px;
+                            height: 43px;
+                        }
                     }
                 }
             }
