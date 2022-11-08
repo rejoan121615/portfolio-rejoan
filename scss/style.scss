@@ -414,23 +414,23 @@ $respList: (
     .content {
         align-self: center;
         // list
-        $social: (
-            1: (
-                color: "#14A800",
-                width: 100px,
-                name: upwork,
-            ),
-            2: (
-                color: "#000000",
-                width: 100px,
-                name: github,
-            ),
-            3: (
-                color: "#087AEA",
-                width: 100px,
-                name: facebook,
-            ),
-        );
+        // $social: (
+        //     1: (
+        //         color: "#14A800",
+        //         width: 100px,
+        //         name: upwork,
+        //     ),
+        //     2: (
+        //         color: "#000000",
+        //         width: 100px,
+        //         name: github,
+        //     ),
+        //     3: (
+        //         color: "#087AEA",
+        //         width: 100px,
+        //         name: facebook,
+        //     ),
+        // );
 
         display: grid;
         grid-template-rows: 1fr 2fr;
@@ -447,6 +447,30 @@ $respList: (
             grid-template-columns: 100px 5fr;
             grid-template-rows: repeat(3, 100px);
             gap: 15px;
+        }
+        @include resp($lg) {
+            grid-template-columns: 130px 5fr;
+            grid-template-rows: repeat(3, 130px);
+            grid-column-gap: 17px;
+            grid-row-gap: 15px;
+        }
+        @include resp($xl) {
+            grid-template-columns: 150px 5fr;
+            grid-template-rows: repeat(3, 150px);
+            grid-column-gap: 20px;
+            grid-row-gap: 18px;
+        }
+        @include resp($xxl) {
+            grid-template-columns: 180px 5fr;
+            grid-template-rows: repeat(3, 180px);
+            grid-column-gap: 25px;
+            grid-row-gap: 20px;
+        }
+        @include resp($mxl) {
+            grid-template-columns: 220px 5fr;
+            grid-template-rows: repeat(3, 220px);
+            grid-column-gap: 28px;
+            grid-row-gap: 23px;
         }
 
         // @include resp($lg) {
@@ -470,6 +494,28 @@ $respList: (
             @include resp($md) {
                 height: initial;
             }
+
+            .content{
+                display: flex;
+                flex-flow: column wrap;
+            }
+            .email, .message{
+                display: flex;
+                flex-flow: row wrap;
+
+                input{
+                    border: none;
+                    background-color: none;
+                    border-bottom: 2px solid $border;
+                }
+            }
+            .message{
+
+                .message-input{
+                    display: flex;
+                    flex-flow: column;
+                }
+            }
         }
         .upwork {
             grid-area: upwork;
@@ -479,6 +525,18 @@ $respList: (
                 width: 60px;
                 @include resp($md) {
                     width: 40px;
+                }
+                @include resp($lg) {
+                    width: 55px;
+                }
+                @include resp($xl) {
+                    width: 65px;
+                }
+                @include resp($xxl) {
+                    width: 77px;
+                }
+                @include resp($mxl) {
+                    width: 88px;
                 }
             }
         }
@@ -490,6 +548,18 @@ $respList: (
                 @include resp($md) {
                     width: 28px;
                 }
+                @include resp($lg) {
+                    width: 50px;
+                }
+                @include resp($xl) {
+                    width: 65px;
+                }
+                @include resp($xxl) {
+                    width: 77px;
+                }
+                @include resp($mxl) {
+                    width: 90px;
+                }
             }
         }
         .facebook {
@@ -499,6 +569,18 @@ $respList: (
                 width: 28px;
                 @include resp($md) {
                     width: 20px;
+                }
+                @include resp($lg) {
+                    width: 27px;
+                }
+                @include resp($xl) {
+                    width: 33px;
+                }
+                @include resp($xxl) {
+                    width: 40px;
+                }
+                @include resp($mxl) {
+                    width: 50px;
                 }
             }
         }
