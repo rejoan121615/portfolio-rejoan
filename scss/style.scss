@@ -1,7 +1,147 @@
 @import "./modules/fonts";
 @import "./modules/variable";
 @import "./modules/mixing";
-@import "./modules/commonStyle";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+%fullHW {
+    width: 100vw;
+    height: 100vh;
+}
+
+%center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-box {
+    position: relative;
+    z-index: 500;
+}
+
+.app {
+    overflow-x: hidden;
+}
+
+$respList: (
+    $sm: 540,
+    $md: 720,
+    $lg: 960,
+    $xl: 1140,
+    $xxl: 1320,
+    $mxl: 1700,
+);
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    @include resp($sm) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@each $screen, $maxScreen in $respList {
+    .container {
+        @include resp($screen) {
+            max-width: $maxScreen + px;
+        }
+    }
+}
+
+.section-title {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    column-gap: 10px;
+    @include fluid-type(320px, 768px, 30px, 65px);
+    h1 {
+        font-family: mak;
+        font-size: 30px;
+        @include resp($xs) {
+            font-size: 35px;
+        }
+        @include resp($sm) {
+            font-size: 40px;
+        }
+        @include resp($md) {
+            font-size: 45px;
+        }
+        @include resp($lg) {
+            font-size: 50px;
+        }
+        @include resp($xl) {
+            font-size: 55px;
+        }
+        @include resp($xxl) {
+            font-size: 65px;
+        }
+        @include resp($mxl) {
+            font-size: 70px;
+        }
+    }
+    .gradient {
+        background: linear-gradient(
+            90deg,
+            #ff6360 0%,
+            #2dc6fb 72.92%,
+            #ffe198 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        font-family: "quanty";
+        font-style: normal;
+        font-weight: 400;
+        display: inline-block;
+        margin-top: -8px;
+        @include resp($xs) {
+            font-size: 35px;
+            margin-top: -10px;
+        }
+        @include resp($sm) {
+            font-size: 40px;
+            margin-top: -13px;
+        }
+        @include resp($md) {
+            font-size: 45px;
+        }
+        @include resp($lg) {
+            font-size: 50px;
+        }
+        @include resp($xl) {
+            font-size: 55px;
+        }
+        @include resp($xxl) {
+            font-size: 65px;
+        }
+        @include resp($mxl) {
+            font-size: 70px;
+        }
+    }
+}
+
+.coating-parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    .coating-child {
+        grid-row: 1/-1;
+        grid-column: 1/-1;
+    }
+}
+
+
 
 // section
 @import "./partials/background";
@@ -228,7 +368,7 @@
         flex-wrap: nowrap;
         column-gap: 10px;
         margin-bottom: 10px;
-        @include resp ($lg) {
+        @include resp($lg) {
             column-gap: 15px;
             margin-bottom: 15px;
         }
@@ -242,20 +382,25 @@
         img {
             flex-shrink: 0;
             width: 100px;
-            @include resp ($sm) {
+            @include resp($sm) {
                 width: 120px;
             }
-            @include resp ($md) {
+            @include resp($md) {
                 width: 150px;
             }
         }
     }
 }
 
-// contact section 
+// contact section
 #contact {
     height: 100vh;
     margin-top: 32px;
+    .container {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 200px auto 50px;
+    }
     .title {
         position: relative;
         z-index: 50;
@@ -263,48 +408,122 @@
     .section-title {
         .comma {
             font-family: Arial;
-
         }
-    }
-    .coating-parent{
-        display: block;
     }
 
     .content {
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas: "upwork github facebook"
-                            "contact contact contact"
-                            "contact contact contact";
+        align-self: center;
+        // list
+        $social: (
+            1: (
+                color: "#14A800",
+                width: 100px,
+                name: upwork,
+            ),
+            2: (
+                color: "#000000",
+                width: 100px,
+                name: github,
+            ),
+            3: (
+                color: "#087AEA",
+                width: 100px,
+                name: facebook,
+            ),
+        );
 
-        @include resp($lg) {
-            grid-template-areas: "upwork contact contact"
-                                "github contact contact"
-                                "facebook contact contact";
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            "upwork github facebook"
+            "contact contact contact";
+        gap: 15px;
+        @include resp($sm) {
+            gap: 22px;
         }
-        .box-btn {
-            width: 220px;
-            height: 220px;
-            border-radius: 30px;
-            display: inline-block;
+        @include resp($md) {
+            grid-template-areas: "upwork contact" "github contact" "facebook contact";
+            grid-template-columns: 100px 5fr;
+            grid-template-rows: repeat(3, 100px);
+            gap: 15px;
         }
-        .upwork{
-            background-color: aqua;
+
+        // @include resp($lg) {
+        //     grid-template-areas: "upwork contact contact"
+        //                         "github contact contact"
+        //                         "facebook contact contact";
+        // }
+        .box-btn,
+        .contact-form {
+            // width: 100%;
+            height: 125px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $bg;
+            box-shadow: 0px 0px 10px;
+            // @extend %center;
+            @include resp($sm) {
+            }
+            @include resp($md) {
+                height: initial;
+            }
+        }
+        .upwork {
             grid-area: upwork;
+            color: $upwork;
+            // box-sha
+            svg {
+                width: 60px;
+                @include resp($md) {
+                    width: 40px;
+                }
+            }
         }
-        .github{
-            background-color: bisque;
+        .github {
             grid-area: github;
+            color: $github;
+            svg {
+                width: 45px;
+                @include resp($md) {
+                    width: 28px;
+                }
+            }
         }
-        .facebook{
-            background-color: yellow;
+        .facebook {
             grid-area: facebook;
+            color: $fb;
+            svg {
+                width: 28px;
+                @include resp($md) {
+                    width: 20px;
+                }
+            }
         }
-        .contact-form{
-            background-color: pink;
+        .contact-form {
             grid-area: contact;
+            color: #3f626e;
+            height: 250px;
+            @include resp($md) {
+                height: 100%;
+            }
         }
     }
+}
 
+footer {
+    text-align: center;
+    font-family: kurye;
+    color: $mainHeading;
+    div {
+        height: initial;
+        border-top: 1px solid $mainHeading;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        p {
+            height: initial;
+        }
+    }
 }

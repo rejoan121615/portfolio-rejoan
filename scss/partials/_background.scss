@@ -1,3 +1,6 @@
+$red: #ff6360;
+$blue: #7fdeff;
+$yellow: #ffe198;
 .bg-color-mask {
     width: 100vw;
     height: 100vh;
@@ -7,32 +10,36 @@
     top: 0;
     @extend %center;
     .item-wrap {
-        width: 200px;
-        height: 500px;
-        position: relative;
+        // width: 200px;
+        // height: 400px;
+        display: grid;
+        grid-template: 
+                        "red" 200px
+                        "blue" 200px
+                        "yellow" 200px / 200px
+        ;
         
-    }
-    .item {
-        // $size: 541px;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        filter: blur(50px);
-        // filter: blur(150px);
-        &:nth-child(1) {
-            background: #7fdeff;
-            // left: 392px;
-            // top: 259px;
+        position: relative;
+        & > div {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            filter: blur(60px);
+            justify-self: center;
         }
-        &:nth-child(2) {
-            background: #ff6360;
-            // left: 797px;
-            // top: 259px;
+        .red {
+            align-self: flex-start;
+            background-color: $red;
+            grid-area: red;
         }
-        &:nth-child(3) {
-            background: #ffe198;
-            // left: 1202px;
-            // top: 259px;
+        .blue {
+            background-color: $blue;
+            grid-area: blue;
+        }
+        .yellow {
+            background-color: $yellow;
+            grid-area: yellow;
+            align-self: flex-end;
         }
     }
 }
