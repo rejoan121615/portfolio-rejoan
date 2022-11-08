@@ -196,22 +196,6 @@
                     @include resp($sm) {
                         width: 25px;
                     }
-                    // @include resp($md) {
-                    //     width: 18px;
-                    //     height: 25px;
-                    // }
-                    // @include resp($xl) {
-                    //     width: 22px;
-                    //     height: 30px;
-                    // }
-                    // @include resp($xxl) {
-                    //     width: 26px;
-                    //     height: 34px;
-                    // }
-                    // @include resp($mxl) {
-                    //     width: 32px;
-                    //     height: 43px;
-                    // }
                     img {
                         width: 20px;
                         height: 30px;
@@ -219,10 +203,6 @@
                         position: absolute;
                         left: 0px;
                         bottom: 0;
-                        // @include resp($sm) {
-                        //     width: 25px;
-                        //     height: 35px;
-                        // }
                         @include resp($md) {
                             width: 25px;
                             height: 35px;
@@ -242,14 +222,21 @@
                     }
                 }
             }
-            // clip-path: circle(50% at 50% 50%);
         }
     }
 }
 
 #squre-circle {
-    margin-top: 35px;
-    margin-top: 35px;
+    // margin-top: 50px;
+    margin-bottom: 100px;
+    @include resp ($xxl) {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+    @include resp ($mxl) {
+        margin-top: 50px;
+        margin-bottom: 200px;
+    }
     .wrapper {
         width: 100%;
         // height: 200px;

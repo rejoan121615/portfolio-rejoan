@@ -141,8 +141,6 @@ $respList: (
     }
 }
 
-
-
 // section
 @import "./partials/background";
 @import "./partials/main";
@@ -151,10 +149,14 @@ $respList: (
 // skill section
 #skill {
     height: 100vh;
+    max-height: 500px;
+    @include resp($sm) {
+        max-height: initial;
+    }
     .container {
         height: 100%;
         .section-title {
-            padding-top: 45px;
+            // padding-top: 45px;
         }
     }
 
@@ -184,6 +186,12 @@ $respList: (
     .project-list {
         margin-top: 100px;
         @extend .coating-parent;
+        @include resp ($md) {
+            margin-top: 150px;
+        }
+        @include resp ($xxl) {
+            margin-top: 175px;
+        }
         .background {
             @extend .coating-child;
             @extend %center;
@@ -203,6 +211,11 @@ $respList: (
             }
             @include resp($md) {
                 row-gap: 120px;
+            }
+            @include resp ($xl) {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
             }
             .pro-card {
                 &:nth-child(even) {
@@ -224,8 +237,17 @@ $respList: (
     @include resp($md) {
         max-width: 400px;
     }
-    @include resp($mxl) {
+    @include resp ($xl) {
         max-width: 500px;
+    }
+    @include resp ($xxl) {
+        max-width: 550px;
+    }
+    @include laptop {
+        max-width: 500px;
+    }
+    @include resp ($mxl) {
+        max-width: 650px;
     }
     img {
         display: inline-block;
@@ -258,11 +280,20 @@ $respList: (
             font-size: 20px;
             font-weight: 400;
             margin-bottom: 10px;
+            @include resp ($sm) {
+                font-size: 22px;
+            }
             @include resp($md) {
                 font-size: 25px;
             }
-            @include resp($mxl) {
+            @include resp ($xl) {
                 font-size: 35px;
+            }
+            @include resp ($xxl) {
+                font-size: 42px;
+            }
+            @include resp($mxl) {
+                font-size: 45px;
             }
         }
         .img-wrap {
@@ -359,6 +390,16 @@ $respList: (
 
 // project slider
 #project-slider {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    @include resp ($xl) {
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
+    @include resp ($mxl) {
+        margin-top: 250px;
+        margin-bottom: 250px;
+    }
     .slider-wrap {
         // overflow: hidden;
     }
