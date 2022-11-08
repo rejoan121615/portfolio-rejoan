@@ -495,7 +495,7 @@ $respList: (
                 height: initial;
             }
 
-            .content{
+            .form-content{
                 display: flex;
                 flex-flow: column wrap;
             }
@@ -503,14 +503,22 @@ $respList: (
                 display: flex;
                 flex-flow: row wrap;
 
+                h3{
+                    font-family: "kurye";
+                    font-size: 20px;
+                    font-weight: 300;
+                }
+
                 input{
                     border: none;
-                    background-color: none;
+                    background: none;
                     border-bottom: 2px solid $border;
+                    padding: 4px 0px;
+                    margin-left: 8px;
                 }
             }
             .message{
-
+                margin-top: 20px;
                 .message-input{
                     display: flex;
                     flex-flow: column;
