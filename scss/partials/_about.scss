@@ -3,7 +3,7 @@
         background-color: $bg;
         overflow: hidden;
         .strip-slide {
-            @include py(4px, 4px);
+            @include py(8px, 8px);
             // border: 2px solid black;
             border: 0.5px solid $mainHeading;
             border-left: none;
@@ -37,38 +37,26 @@
                 p {
                     font-family: "mak";
                     font-weight: 100;
-                    // font-size: 20px;
-                    font-size: 8px;
+                    font-size: 15px;
+                    // font-size: 8px;
                     color: $mainHeading;
-                    @include resp($xs) {
-                        font-size: 11px;
-                    }
-                    @include resp($sm) {
-                        font-size: 13px;
-                    }
-                    @include resp($xl) {
-                        font-size: 16px;
-                    }
-                    @include resp($xxl) {
+                    @include resp ($md) {
                         font-size: 18px;
                     }
-                    @include resp($mxl) {
+                    @include resp($xl) {
                         font-size: 20px;
+                    }
+                    // @include resp($xxl) {
+                    //     font-size: 22px;
+                    // }
+                    @include resp($mxl) {
+                        font-size: 22px;
                     }
                 }
                 .icon {
                     // width: 25px;
-                    width: 10px;
-                    @include resp($xs) {
-                        width: 12px;
-                    }
-                    @include resp($sm) {
-                        width: 15px;
-                    }
-                    @include resp($xl) {
-                        width: 20px;
-                    }
-                    @include resp($xxl) {
+                    width: 20px;
+                    @include resp ($lg) {
                         width: 25px;
                     }
                     @include resp($mxl) {
@@ -158,8 +146,8 @@
                     height: 340px;
                 }
                 @include resp($mxl) {
-                    width: 480px;
-                    height: 480px;
+                    width: 420px;
+                    height: 420px;
                 }
                 img {
                     width: 100%;
@@ -168,11 +156,11 @@
             }
             .text {
                 font-family: "kurye";
-                font-size: 16px;
-                line-height: 150%;
+                font-size: 20px;
+                line-height: 180%;
                 text-align: center;
                 @include resp($sm) {
-                    font-size: 20px;
+                    // font-size: 20px;
                     text-align: left;
                 }
                 @include resp($md) {
@@ -192,9 +180,11 @@
                     font-size: 40px;
                 }
                 .img {
-                    width: 10px;
-                    height: 15px;
+                    width: 20px;
+                    height: 0px;
                     display: inline-block;
+                    position: relative;
+
                     @include resp($sm) {
                         width: 15px;
                         height: 20px;
@@ -216,9 +206,33 @@
                         height: 43px;
                     }
                     img {
-                        width: 100%;
-                        height: 100%;
-                        display: inline-block;
+                        
+                        width: 20px;
+                    height: 30px;
+                    display: inline-block;
+                    position: absolute;
+                    left: 0px;
+                    bottom: 0;
+                    @include resp($sm) {
+                        width: 15px;
+                        height: 20px;
+                    }
+                    @include resp($md) {
+                        width: 18px;
+                        height: 25px;
+                    }
+                    @include resp($xl) {
+                        width: 22px;
+                        height: 30px;
+                    }
+                    @include resp($xxl) {
+                        width: 26px;
+                        height: 34px;
+                    }
+                    @include resp($mxl) {
+                        width: 32px;
+                        height: 43px;
+                    }
                     }
                 }
             }

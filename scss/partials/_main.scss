@@ -62,8 +62,11 @@
         display: grid;
         grid-template: "header" 55px "text" auto / 1fr;
         .name-wrap {
-            width: 70%;
+            @include resp ($sm) {
+            width: 85%;
             max-width: 520px;
+
+            }
             @include resp($lg) {
                 max-width: initial;
                 width: 55%;
@@ -81,7 +84,7 @@
                 text-transform: uppercase;
                 font-weight: 100;
                 // font-size: 50px;
-                @include fluid-type(320px, 767px, 50px, 100px);
+                @include fluid-type(320px, 767px, 75px, 100px);
                 // &:last-child {
                 // margin-left: 330px;
                 // margin-left: 50px;
