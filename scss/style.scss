@@ -474,13 +474,17 @@ $respList: (
         // );
 
         display: grid;
-        grid-template-rows: 1fr 2fr;
+        grid-template-rows: 90px 5fr;
         grid-template-columns: repeat(3, 1fr);
         grid-template-areas:
             "upwork github facebook"
             "contact contact contact";
         gap: 15px;
+        @include resp($xs) {
+            grid-template-rows: 110px 5fr;
+        }
         @include resp($sm) {
+            grid-template-rows: 125px 5fr;
             gap: 22px;
         }
         @include resp($md) {
@@ -519,21 +523,45 @@ $respList: (
         //                         "github contact contact"
         //                         "facebook contact contact";
         // }
+        .contact-form{
+            padding-left: 10px;
+            padding-right: 10px;
+
+            @include resp($xs) {
+                padding: 0px;
+            }
+        }
         .box-btn,
         .contact-form {
             // width: 100%;
-            height: 125px;
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: $bg;
             box-shadow: 0px 0px 10px;
             // @extend %center;
+            @include resp($xs) {
+                border-radius: 13px;
+            }
             @include resp($sm) {
+                border-radius: 16px;
             }
             @include resp($md) {
                 height: initial;
+                border-radius: 19px;
+            }
+            @include resp($lg) {
+                border-radius: 22px;
+            }
+            @include resp($xl) {
+                border-radius: 25px;
+            }
+            @include resp($xxl) {
+                border-radius: 27px;
+            }
+            @include resp($mxl) {
+                border-radius: 30px;
             }
 
             .form-content{
@@ -670,7 +698,13 @@ $respList: (
             color: $upwork;
             // box-sha
             svg {
-                width: 60px;
+                width: 40px;
+                @include resp($xs) {
+                    width: 50px;
+                }
+                @include resp($sm) {
+                    width: 60px;
+                }
                 @include resp($md) {
                     width: 40px;
                 }
@@ -692,7 +726,13 @@ $respList: (
             grid-area: github;
             color: $github;
             svg {
-                width: 45px;
+                width: 35px;
+                @include resp($xs) {
+                    width: 40px;
+                }
+                @include resp($sm) {
+                    width: 45px;
+                }
                 @include resp($md) {
                     width: 28px;
                 }
@@ -714,7 +754,13 @@ $respList: (
             grid-area: facebook;
             color: $fb;
             svg {
-                width: 28px;
+                width: 19px;
+                @include resp($xs) {
+                    width: 24px;
+                }
+                @include resp($sm) {
+                    width: 27px;
+                }
                 @include resp($md) {
                     width: 20px;
                 }
