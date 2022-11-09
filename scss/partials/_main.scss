@@ -59,13 +59,13 @@
         @extend %fullHW;
         @extend %gridCover;
         position: relative;
-        display: grid;
-        grid-template: "header" 55px "text" auto / 1fr;
+        // display: grid;
+        // grid-template: "header" 55px "text" auto / 1fr;
+        @extend %center;
         .name-wrap {
-            @include resp ($sm) {
-            width: 85%;
-            max-width: 520px;
-
+            @include resp($sm) {
+                width: 85%;
+                max-width: 520px;
             }
             @include resp($lg) {
                 max-width: initial;
@@ -106,23 +106,4 @@
         @extend %center;
     }
 
-    // header
-    header {
-        & > .container {
-            display: flex;
-            justify-content: space-between;
-            @include resp($sm) {
-                max-width: initial;
-                width: 95%;
-            }
-            .brand {
-                display: inline-block;
-                width: 35px;
-                @include resp ($md) {
-                    width: 50px;
-                }
-            }
-        }
-       @import '../vendor/hamburgerMenu';
-    }
 }

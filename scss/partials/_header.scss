@@ -1,0 +1,24 @@
+@at-root header {
+    position: sticky;
+    z-index: 600;
+    left: 0;
+    top: 0;
+
+    & > .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include resp($sm) {
+            max-width: initial;
+            width: 95%;
+        }
+        .brand {
+            display: inline-block;
+            width: 35px;
+            @include resp($md) {
+                width: 50px;
+            }
+        }
+    }
+    @import "../vendor/hamburgerMenu";
+}

@@ -8,6 +8,7 @@ $yellow: #ffe198;
     position: fixed;
     left: 0;
     top: 0;
+    z-index: -10;
     @extend %center;
     .item-wrap {
         // width: 200px;

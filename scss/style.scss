@@ -1,148 +1,12 @@
 @import "./modules/fonts";
 @import "./modules/variable";
 @import "./modules/mixing";
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    // overflow-x: hidden;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-%fullHW {
-    width: 100vw;
-    height: 100vh;
-}
-
-%center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.content-box {
-    position: relative;
-    z-index: 500;
-}
-
-.app {
-    overflow-x: hidden;
-}
-
-$respList: (
-    $sm: 540,
-    $md: 720,
-    $lg: 960,
-    $xl: 1140,
-    $xxl: 1320,
-    $mxl: 1700,
-);
-.container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    @include resp($sm) {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-@each $screen, $maxScreen in $respList {
-    .container {
-        @include resp($screen) {
-            max-width: $maxScreen + px;
-        }
-    }
-}
-
-.section-title {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    column-gap: 10px;
-    @include fluid-type(320px, 768px, 30px, 65px);
-    h1 {
-        font-family: mak;
-        font-size: 30px;
-        @include resp($xs) {
-            font-size: 35px;
-        }
-        @include resp($sm) {
-            font-size: 40px;
-        }
-        @include resp($md) {
-            font-size: 45px;
-        }
-        @include resp($lg) {
-            font-size: 50px;
-        }
-        @include resp($xl) {
-            font-size: 55px;
-        }
-        @include resp($xxl) {
-            font-size: 65px;
-        }
-        @include resp($mxl) {
-            font-size: 70px;
-        }
-    }
-    .gradient {
-        background: linear-gradient(
-            90deg,
-            #ff6360 0%,
-            #2dc6fb 72.92%,
-            #ffe198 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-        font-family: "quanty";
-        font-style: normal;
-        font-weight: 400;
-        display: inline-block;
-        margin-top: -8px;
-        @include resp($xs) {
-            font-size: 35px;
-            margin-top: -10px;
-        }
-        @include resp($sm) {
-            font-size: 40px;
-            margin-top: -13px;
-        }
-        @include resp($md) {
-            font-size: 45px;
-        }
-        @include resp($lg) {
-            font-size: 50px;
-        }
-        @include resp($xl) {
-            font-size: 55px;
-        }
-        @include resp($xxl) {
-            font-size: 65px;
-        }
-        @include resp($mxl) {
-            font-size: 70px;
-        }
-    }
-}
-
-.coating-parent {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    .coating-child {
-        grid-row: 1/-1;
-        grid-column: 1/-1;
-    }
-}
+@import "./modules/commonStyle";
 
 // section
 @import "./partials/background";
+@import "./partials/menu";
+@import "./partials/header";
 @import "./partials/main";
 @import "./partials/about";
 
@@ -186,10 +50,10 @@ $respList: (
     .project-list {
         margin-top: 100px;
         @extend .coating-parent;
-        @include resp ($md) {
+        @include resp($md) {
             margin-top: 150px;
         }
-        @include resp ($xxl) {
+        @include resp($xxl) {
             margin-top: 175px;
         }
         .background {
@@ -212,7 +76,7 @@ $respList: (
             @include resp($md) {
                 row-gap: 120px;
             }
-            @include resp ($xl) {
+            @include resp($xl) {
                 width: 90%;
                 margin-left: auto;
                 margin-right: auto;
@@ -237,16 +101,16 @@ $respList: (
     @include resp($md) {
         max-width: 400px;
     }
-    @include resp ($xl) {
+    @include resp($xl) {
         max-width: 500px;
     }
-    @include resp ($xxl) {
+    @include resp($xxl) {
         max-width: 550px;
     }
     @include laptop {
         max-width: 500px;
     }
-    @include resp ($mxl) {
+    @include resp($mxl) {
         max-width: 650px;
     }
     img {
@@ -280,16 +144,16 @@ $respList: (
             font-size: 20px;
             font-weight: 400;
             margin-bottom: 10px;
-            @include resp ($sm) {
+            @include resp($sm) {
                 font-size: 22px;
             }
             @include resp($md) {
                 font-size: 25px;
             }
-            @include resp ($xl) {
+            @include resp($xl) {
                 font-size: 35px;
             }
-            @include resp ($xxl) {
+            @include resp($xxl) {
                 font-size: 42px;
             }
             @include resp($mxl) {
@@ -392,11 +256,11 @@ $respList: (
 #project-slider {
     margin-top: 150px;
     margin-bottom: 150px;
-    @include resp ($xl) {
+    @include resp($xl) {
         margin-top: 200px;
         margin-bottom: 200px;
     }
-    @include resp ($mxl) {
+    @include resp($mxl) {
         margin-top: 250px;
         margin-bottom: 250px;
     }
@@ -523,7 +387,7 @@ $respList: (
         //                         "github contact contact"
         //                         "facebook contact contact";
         // }
-        .contact-form{
+        .contact-form {
             padding-left: 10px;
             padding-right: 10px;
 
@@ -564,15 +428,16 @@ $respList: (
                 border-radius: 30px;
             }
 
-            .form-content{
+            .form-content {
                 display: flex;
                 flex-flow: column wrap;
             }
-            .email, .message{
+            .email,
+            .message {
                 display: flex;
                 flex-flow: row wrap;
 
-                h3{
+                h3 {
                     font-family: "kurye";
                     font-size: 20px;
                     font-weight: 300;
@@ -594,7 +459,7 @@ $respList: (
                     }
                 }
 
-                input{
+                input {
                     border: none;
                     background: none;
                     border-bottom: 2px solid $border;
@@ -623,8 +488,8 @@ $respList: (
                     }
                 }
             }
-            .email{
-                input{
+            .email {
+                input {
                     width: 221px;
 
                     @include resp($xs) {
@@ -650,7 +515,7 @@ $respList: (
                     }
                 }
             }
-            .message{
+            .message {
                 margin-top: 20px;
                 @include resp($lg) {
                     margin-top: 25px;
@@ -664,7 +529,7 @@ $respList: (
                 @include resp($xxl) {
                     margin-top: 60px;
                 }
-                .message-input{
+                .message-input {
                     display: flex;
                     flex-flow: column;
                     width: 200px;
