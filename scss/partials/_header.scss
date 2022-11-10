@@ -12,6 +12,12 @@
             max-width: initial;
             width: 95%;
         }
+        @include laptop {
+            height: 70px;
+        }
+        @include resp ($mxl) {
+            height: 80px;
+        }
         .brand {
             display: inline-block;
             width: 35px;

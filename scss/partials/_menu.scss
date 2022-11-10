@@ -12,6 +12,23 @@ $menu-color: #403737;
     background: transparent url("../../images/menu-bg.jpg") no-repeat center
         center;
     background-size: 100% 100%;
+    clip-path: circle(0% at calc((100vw - 55px)) 25px);
+    transition: clip-path 0.8s;
+    @include resp($md) {
+        clip-path: circle(0% at calc((100vw - 5%) - 28px) 30px);
+    }
+    @include resp($lg) {
+        clip-path: circle(0% at calc((100vw - 5%) - 20px) 32px);
+    }
+    @include resp($xl) {
+        transition: clip-path 1s;
+    }
+    @include resp($xxl) {
+        clip-path: circle(0% at calc((100vw - 5%) - 10px) 40px);
+    }
+    @include resp($mxl) {
+        clip-path: circle(0% at calc((100vw - 5%)) 45px);
+    }
     ul {
         li {
             display: flex;
@@ -36,8 +53,8 @@ $menu-color: #403737;
                 @include resp($md) {
                     margin-left: 75px;
                 }
-                @include resp ($xl) {
-                  margin-left: 0;
+                @include resp($xl) {
+                    margin-left: 0;
                 }
             }
             &:nth-child(odd) {
@@ -81,4 +98,10 @@ $menu-color: #403737;
             }
         }
     }
+}
+
+$openSelector: selector-nest("#menu", "&.open");
+
+#{$openSelector} {
+    clip-path: circle(150% at 90% 28px);
 }
