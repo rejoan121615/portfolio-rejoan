@@ -1,10 +1,84 @@
+$menu-color: #403737;
+
 #menu {
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  position: sticky;
-  background-color: rgba(0, 128, 0, 0.195);
-  z-index: 500;
-  margin-bottom: -100vh;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: sticky;
+    z-index: 500;
+    margin-bottom: -100vh;
+    @extend %center;
+    background: transparent url("../../images/menu-bg.jpg") no-repeat center
+        center;
+    background-size: 100% 100%;
+    ul {
+        li {
+            display: flex;
+            align-items: center;
+            column-gap: 15px;
+            @include resp($md) {
+                column-gap: 25px;
+            }
+            @include py(15px, 15px);
+            cursor: pointer;
+            &:hover {
+                a {
+                    color: $menu-color;
+                }
+                .circle {
+                    background-color: $menu-color;
+                    border-radius: 0px;
+                }
+            }
+            &:nth-child(even) {
+                margin-left: 50px;
+                @include resp($md) {
+                    margin-left: 75px;
+                }
+                @include resp ($xl) {
+                  margin-left: 0;
+                }
+            }
+            &:nth-child(odd) {
+                // margin-left;
+            }
+            .circle {
+                width: 20px;
+                height: 20px;
+                // background-color: $menu-color;
+                border: 1px solid $menu-color;
+                border-radius: 50%;
+                transition: border-radius 0.25s;
+                @include resp($md) {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+            a {
+                font-family: "roboto";
+                text-decoration: none;
+                color: transparent;
+                font-size: 35px;
+                // text-transform: uppercase;
+                // box-shadow: 0px 0px 2px red;
+                -webkit-text-stroke: 2px $menu-color;
+                display: inline-block;
+                letter-spacing: 2px;
+                transition: all 0.25s;
+                @include resp($md) {
+                    font-size: 55px;
+                }
+                @include resp($lg) {
+                    font-size: 75px;
+                }
+                @include laptop {
+                    font-size: 65px;
+                }
+                @include resp($mxl) {
+                    font-size: 100px;
+                }
+            }
+        }
+    }
 }

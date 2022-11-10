@@ -16,7 +16,16 @@
             </div>
         </div>
         <!-- menu section  -->
-        <div id="menu"></div>
+        <div id="menu">
+            <ul>
+                <li> <span class="circle"></span> <a href="">Menu</a></li>
+                <li> <span class="circle"></span> <a href="">About</a></li>
+                <li> <span class="circle"></span> <a href="">Skills</a></li>
+                <li> <span class="circle"></span> <a href="">Projects</a></li>
+                <li> <span class="circle"></span> <a href="">Contacts</a></li>
+            </ul>
+        </div>
+        <!-- header  -->
         <header>
             <div class="container">
                 <a href="" class="brand">
@@ -35,7 +44,7 @@
                         />
                     </svg>
                 </a>
-                <div>
+                <div class="nav-btn">
                     <button
                         class="menu"
                         onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))"
@@ -1237,5 +1246,7 @@
                 </footer>
             </div>
         </section>
+        <!-- js file  -->
+        <script src="js/script.js" type="module"></script>
     </body>
 </html>
