@@ -4,7 +4,9 @@
     left: 0;
     top: 0;
     margin-bottom: -60px;
-
+    @include resp ($mxl) {
+        margin-bottom: -80px;
+    }
     & > .container {
         display: flex;
         justify-content: space-between;
@@ -25,7 +27,7 @@
             @include resp($md) {
                 width: 50px;
             }
-        }
+        } 
     }
     @import "../vendor/hamburgerMenu";
 }
