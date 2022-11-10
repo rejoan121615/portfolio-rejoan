@@ -63,39 +63,71 @@
         // grid-template: "header" 55px "text" auto / 1fr;
         @extend %center;
         .name-wrap {
-            @include resp($sm) {
-                width: 85%;
-                max-width: 520px;
-            }
-            @include resp($lg) {
-                max-width: initial;
-                width: 55%;
-            }
-            @include resp($xxl) {
-                width: 60%;
-            }
-            @include resp($mxl) {
-                max-width: 1080px;
-            }
             h1 {
-                font-family: "brolimo";
+                font-family: "sauber";
+                // font-family: "brolimo";
                 // font-size: 200px;
                 color: $mainHeading;
                 text-transform: uppercase;
                 font-weight: 100;
-                // font-size: 50px;
-                @include fluid-type(320px, 767px, 75px, 100px);
-                // &:last-child {
-                // margin-left: 330px;
-                // margin-left: 50px;
+                // @include fluid-type(320px, 767px, 75px, 100px);
+                // @include resp($lg) {
+                //     @include fluid-type(992px, 1800px, 100px, 200px);
                 // }
+                font-size: 60px;
+                @include resp($xs) {
+                    font-size: 70px;
+                }
+                @include resp($sm) {
+                    font-size: 90px;
+                }
+                @include resp($md) {
+                    font-size: 120px;
+                }
                 @include resp($lg) {
-                    @include fluid-type(992px, 1800px, 100px, 200px);
+                    font-size: 150px;
+                }
+                @include resp($xxl) {
+                    font-size: 180px;
+                }
+                @include resp ($mxl) {
+                    font-size: 200px;
                 }
                 &:first-child {
+                    margin-left: -60px;
+                    @include resp($sm) {
+                        margin-left: -90px;
+                    }
+                    @include resp($md) {
+                        margin-left: -110px;
+                    }
+                    @include resp($lg) {
+                        margin-left: -180px;
+                    }
+                    @include resp($xxl) {
+                        margin-left: -220px;
+                    }
+                    @include resp ($mxl) {
+                        margin-left: -250px;
+                    }
                 }
                 &:last-child {
-                    text-align: right;
+                    margin-right: -60px;
+                    @include resp($sm) {
+                        margin-right: -90px;
+                    }
+                    @include resp($md) {
+                        margin-right: -110px;
+                    }
+                    @include resp($lg) {
+                        margin-right: -180px;
+                    }
+                    @include resp($xxl) {
+                        margin-right: -220px;
+                    }
+                    @include resp ($mxl) {
+                        margin-right: -250px;
+                    }
                 }
             }
         }
@@ -105,5 +137,4 @@
         width: 100%;
         @extend %center;
     }
-
 }

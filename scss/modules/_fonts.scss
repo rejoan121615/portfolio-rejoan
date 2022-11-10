@@ -11,6 +11,7 @@
 @include genFonts("kurye", "Kurye-Light.otf");
 @include genFonts("kuryeItalic", "Kurye-LightItalic.otf");
 @include genFonts("roboto", "Roboto-Black.ttf");
+@include genFonts("sauber", "Sauber.otf");
 
 @function strip-unit($value) {
     @return $value / ($value * 0 + 1);

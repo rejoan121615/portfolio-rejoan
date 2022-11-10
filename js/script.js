@@ -3,6 +3,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const menuSplitText = new SplitText("#menu li a", { type: "lines" });
 
+
 // menu function
 const navBtn = document.querySelector(".nav-btn button");
 // const menu = document.querySelector("#menu");
@@ -53,3 +54,25 @@ function MenuHandler(target) {
     navCounter = !navCounter;
 }
 navBtn.onclick = MenuHandler;
+
+
+// main section animation
+new SplitText('#main .name-container h1', {
+  type: 'chars',
+  charsClass: 'letter-wrap',
+})
+
+const mainTitle = new SplitText('#main .name-container h1', {
+  type: 'chars',
+  charsClass: 'letter',
+})
+
+console.log(mainTitle);
+
+gsap.fromTo(mainTitle.chars, {
+  x: "-100%"
+}, {
+  x: "0",
+  duration: 0.8,
+  delay: 1,
+});
