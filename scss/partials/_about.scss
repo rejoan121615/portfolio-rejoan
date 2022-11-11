@@ -11,7 +11,7 @@
     }
 
     .strip-slide {
-        animation: slide-left 150s linear infinite;
+        // animation: slide-left 150s linear infinite;
         @include py(8px, 8px);
         // border: 2px solid black;
         border: 0.5px solid $mainHeading;

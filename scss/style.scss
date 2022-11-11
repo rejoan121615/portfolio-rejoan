@@ -4,6 +4,7 @@
 @import "./modules/commonStyle";
 
 // section
+@import "./partials/loading";
 @import "./partials/background";
 @import "./partials/menu";
 @import "./partials/header";
@@ -265,7 +266,7 @@
         margin-bottom: 250px;
     }
     .slider-wrap {
-        // overflow: hidden;
+        overflow: hidden;
     }
     .slider {
         // overflow-x: hidden;
@@ -273,6 +274,7 @@
         flex-wrap: nowrap;
         column-gap: 10px;
         margin-bottom: 10px;
+        // overflow-x: hidden;
         @include resp($lg) {
             column-gap: 15px;
             margin-bottom: 15px;

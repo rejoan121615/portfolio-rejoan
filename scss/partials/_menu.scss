@@ -6,7 +6,7 @@ $menu-color: #403737;
     left: 0;
     top: 0;
     position: sticky;
-    z-index: 500;
+    z-index: 20;
     margin-bottom: -100vh;
     @extend %center;
     background: transparent url("../../images/menu-bg.jpg") no-repeat center

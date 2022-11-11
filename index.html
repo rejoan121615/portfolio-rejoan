@@ -8,6 +8,13 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
+        <!-- loading background  -->
+        <div id="loading-bg">
+            <div class="shade"></div>
+            <div class="shade"></div>
+            <div class="shade"></div>
+        </div>
+        <!--  background  -->
         <div class="bg-color-mask">
             <div class="item-wrap">
                 <div class="red"></div>
@@ -61,6 +68,7 @@
                 </div>
             </div>
         </header>
+        <!-- main section  -->
         <main id="main">
             <!-- background circle svg  -->
             <!-- <div class="svg-container">
@@ -102,7 +110,20 @@
             <div class="name-container">
                 <div class="container">
                     <div class="name-wrap">
-                        <h1>Mohd</h1>
+                        <h1>
+                            M
+                            <div id="loader">
+                                <div class=" svg-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 348 348">
+                                        <path  d="M0 0h348v348H0z"/>
+                                        <circle cx="174" cy="174" r="145" />
+                                        <circle cx="174" cy="174" r="145" />
+                                        <circle cx="174" cy="174" r="145" />
+                                    </svg>
+                                </div>
+                            </div>
+                            hd
+                        </h1>
                         <h1>Rejoan</h1>
                     </div>
                 </div>
@@ -1246,6 +1267,7 @@
         <script src="./js/vendor/gsap.min.js"></script>
         <script src="./js/vendor/ScrollTrigger.min.js"></script>
         <script src="./js/vendor/SplitText.min.js"></script>
+        <script src="./js/vendor/CSSRulePlugin.min.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
