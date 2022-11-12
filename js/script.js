@@ -80,7 +80,6 @@ function MainHeadingAnimation() {
     return tl;
 }
 
-
 // loading indicator------------------------------------------------
 
 function LoadingScreenAnimation() {
@@ -143,9 +142,40 @@ function LoadingScreenAnimation() {
     return tl;
 }
 
+function MainScreenAssetsAnimation() {
+    const time = 0.7;
+    return gsap
+        .timeline()
+        .from("#page-progress", {
+            // x: "-200%",
+            y: "200%",
+            duration: time,
+        })
+        .from(
+            "header > .container .brand",
+            {
+                // x: "-200%",
+                y: "-200%",
+                duration: time,
+            },
+            "<"
+        )
+        .from(
+            "header .menu",
+            {
+                // x: "200%",
+                y: "-200%",
+                duration: time,
+            },
+            "<"
+        );
+}
 
 // Master timeline ---------------------------------
 
 const MasterTl = gsap.timeline();
 
-MasterTl.add(LoadingScreenAnimation());
+MasterTl.add(LoadingScreenAnimation()).add(
+    MainScreenAssetsAnimation(),
+    "-=0.3"
+);
