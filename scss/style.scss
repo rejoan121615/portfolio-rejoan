@@ -312,6 +312,7 @@
     .title {
         position: relative;
         z-index: 50;
+        padding-top: 70px;
     }
     .section-title {
         .comma {
@@ -339,7 +340,7 @@
         //         name: facebook,
         //     ),
         // );
-
+        padding-bottom: 50px;
         display: grid;
         grid-template-rows: 90px 5fr;
         grid-template-columns: repeat(3, 1fr);
@@ -404,7 +405,6 @@
             border-radius: 10px;
             display: flex;
             justify-content: center;
-            align-items: center;
             background-color: $bg;
             box-shadow: 0px 0px 10px;
             // @extend %center;
@@ -429,11 +429,6 @@
             }
             @include resp($mxl) {
                 border-radius: 30px;
-            }
-
-            .form-content {
-                display: flex;
-                flex-flow: column wrap;
             }
             .email,
             .message {
@@ -466,7 +461,7 @@
                     border: none;
                     background: none;
                     border-bottom: 2px solid $border;
-                    padding: 4px 0px;
+                    padding: 2px 0px;
                     margin-left: 8px;
 
                     @include resp($md) {
@@ -492,6 +487,7 @@
                 }
             }
             .email {
+                padding-top: 20px;
                 input {
                     width: 221px;
 
@@ -557,6 +553,13 @@
                     }
                     @include resp($mxl) {
                         width: 1150px;
+                    }
+                    .hide-inp{
+                        display: none;
+
+                        @include resp($md) {
+                            display: block;
+                        }
                     }
                 }
             }
