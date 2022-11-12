@@ -80,7 +80,6 @@ function MainHeadingAnimation() {
     return tl;
 }
 
-// MainHeadingAnimation()
 
 // loading indicator------------------------------------------------
 
@@ -144,12 +143,9 @@ function LoadingScreenAnimation() {
     return tl;
 }
 
-// LoadingScreenAnimation();
-// main section animation ------------------------------------
 
 // Master timeline ---------------------------------
 
 const MasterTl = gsap.timeline();
 
 MasterTl.add(LoadingScreenAnimation());
-// .add(MainHeadingAnimation());
