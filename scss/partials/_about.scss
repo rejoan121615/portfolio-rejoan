@@ -11,15 +11,15 @@
     }
 
     .strip-slide {
+        display: flex;
+        flex-flow: row nowrap;
         // animation: slide-left 150s linear infinite;
         @include py(8px, 8px);
         // border: 2px solid black;
         border: 0.5px solid $mainHeading;
         border-left: none;
         border-right: none;
-        display: flex;
-        flex-flow: row wrap;
-        width: 7000px;
+        // width: 7000px;
         column-gap: 12px;
         @include resp($md) {
             @include py(6px, 6px);
@@ -34,7 +34,10 @@
             border-width: 2px;
         }
         .slider {
-            @extend %center;
+            display: flex;
+            flex-flow: row nowrap;
+            flex-shrink: 0;
+            align-items: center;
             // column-gap: 20px;
             column-gap: 12px;
             @include resp($md) {
@@ -44,6 +47,7 @@
                 column-gap: 20px;
             }
             p {
+                flex-shrink: 0;
                 font-family: "mak";
                 font-weight: 100;
                 font-size: 15px;
@@ -63,7 +67,7 @@
                 }
             }
             .icon {
-                // width: 25px;
+                flex-shrink: 0;
                 width: 20px;
                 @include resp($lg) {
                     width: 25px;

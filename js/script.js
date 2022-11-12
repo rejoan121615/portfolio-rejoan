@@ -175,7 +175,11 @@ function MainScreenAssetsAnimation() {
 
 const MasterTl = gsap.timeline();
 
-MasterTl.add(LoadingScreenAnimation()).add(
-    MainScreenAssetsAnimation(),
-    "-=0.3"
-);
+// MasterTl.add(LoadingScreenAnimation()).add(
+//     MainScreenAssetsAnimation(),
+//     "-=0.3"
+// );
+
+
+
+// section snap animation -----------------------------------------------
