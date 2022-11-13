@@ -64,6 +64,7 @@ $respList: (
     h1 {
         font-family: mak;
         font-size: 30px;
+        overflow: hidden;
         @include resp($xs) {
             font-size: 35px;
         }
@@ -87,16 +88,17 @@ $respList: (
         }
     }
     .gradient {
-        background: linear-gradient(
-            90deg,
-            #ff6360 0%,
-            #2dc6fb 72.92%,
-            #ffe198 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        overflow: hidden;
+        // background: linear-gradient(
+        //     90deg,
+        //     #ff6360 0%,
+        //     #2dc6fb 72.92%,
+        //     #ffe198 100%
+        // );
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-fill-color: transparent;
+        // text-fill-color: transparent;
         font-family: "quanty";
         font-style: normal;
         font-weight: 400;

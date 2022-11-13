@@ -180,6 +180,151 @@ const MasterTl = gsap.timeline();
 //     "-=0.3"
 // );
 
+// snap animation ------------------------------
 
+// function SnapSection() {
+//     let sections = gsap.utils.toArray('.panel');
+//     gsap.to(sections, {
+//         xPercent: -100 * (sections.length - 1),
+//         ease: "none",
+//         scrollTrigger: {
+//             trigger: ".container",
+//             scrub: 1,
+//                  },
+//     });
+// }
 
-// section snap animation -----------------------------------------------
+// SnapSection()
+
+// section title animation ----------------------------
+function SecTitleAni(selector) {
+    const letter = new SplitText(`${selector} .section-title h1`, {
+        type: "chars",
+        charsClass: "letter",
+    });
+    const gradient = new SplitText(`${selector} .section-title .gradient`, {
+        type: "chars",
+        charsClass: "grd-letter",
+    });
+    console.log(letter);
+    console.log(gradient);
+    return gsap.timeline().fromTo(
+        [letter.chars, gradient.chars],
+        {
+            y: "150%",
+            rotate: "100deg",
+        },
+        {
+            y: "0%",
+            rotate: "0",
+            duration: 1,
+            // repeat: -1,
+            stagger: {
+                each: 0.05,
+            },
+        }
+    );
+}
+
+// SecTitleAni("#about");
+// about section animation ------------------------------
+
+function AboutSecImg() {
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+        "#about .container .discription .image img",
+        {
+            filter: " blur(20px)",
+        },
+        {
+            filter: "blur(0px)",
+            duration: 1,
+        }
+    );
+
+    return tl;
+}
+
+// AboutSecImg();
+
+function AboutSecText() {
+    const word = new SplitText("#about .container .discription .text", {
+        type: "word",
+        wordsClass: "letter-wrap",
+    });
+    const letter = new SplitText("#about .container .discription .text", {
+        type: "chars",
+        charsClass: "letter",
+    });
+    const imgAfter = CSSRulePlugin.getRule(
+        "#about .container .discription .text .img::after"
+    );
+    // const img = new SplitText("#about .container .discription .text .img", {
+    //     type: 'line',
+    //     charsClass: 'img-wrap'
+    // });
+    // console.log('image', img)
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+        letter.chars,
+        {
+            y: "100%",
+        },
+        {
+            y: "0%",
+            duration: 1,
+            stagger: {
+                each: 0.0001,
+            },
+        }
+    )
+
+        .from(
+            imgAfter,
+            {
+                cssRule: {
+                    y: "110%",
+                },
+                duration: 1,
+            },
+            "<"
+        )
+        .from(
+            "#about .container .discription .text .img img",
+            {
+                y: "110%",
+                duration: 1,
+            },
+            "<"
+        )
+        .to(
+            imgAfter,
+            {
+                cssRule: {
+                    y: "-100%",
+                },
+            },
+            "+=0.2"
+        );
+
+    return tl;
+}
+
+// AboutSecText();
+
+const AboutTL = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#about",
+        markers: true,
+        start: "top 10%",
+        // end: "bottom center",
+        pin: true,
+        // scrub: true,
+    },
+});
+
+AboutTL.add(SecTitleAni("#about"))
+    .add(AboutSecImg(), "-=0.2")
+    .add(AboutSecText(), "<");
