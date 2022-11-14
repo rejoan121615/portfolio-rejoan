@@ -1,6 +1,6 @@
 console.clear();
 // gsap animation
-gsap.registerPlugin(ScrollTrigger, SplitText, CSSRulePlugin);
+gsap.registerPlugin(ScrollTrigger, SplitText, CSSRulePlugin, GSDevTools);
 
 function MenuAnimation() {
     const menuSplitText = new SplitText("#menu li a", { type: "lines" });
@@ -212,12 +212,12 @@ function SecTitleAni(selector) {
         [letter.chars, gradient.chars],
         {
             y: "150%",
-            rotate: "100deg",
+            rotate: "30deg",
         },
         {
             y: "0%",
             rotate: "0",
-            duration: 1,
+            duration: 0.6,
             // repeat: -1,
             stagger: {
                 each: 0.05,
@@ -274,7 +274,7 @@ function AboutSecText() {
         },
         {
             y: "0%",
-            duration: 1,
+            duration: 0.6,
             stagger: {
                 each: 0.0001,
             },
@@ -287,7 +287,7 @@ function AboutSecText() {
                 cssRule: {
                     y: "110%",
                 },
-                duration: 1,
+                duration: 0.6,
             },
             "<"
         )
@@ -314,17 +314,149 @@ function AboutSecText() {
 
 // AboutSecText();
 
-const AboutTL = gsap.timeline({
-    scrollTrigger: {
-        trigger: "#about",
-        markers: true,
-        start: "top 10%",
-        // end: "bottom center",
-        pin: true,
-        // scrub: true,
-    },
-});
+// const AboutTL = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: "#about",
+//         start: "top 10%",
+//         pin: true,
+//         scrub: true,
+//     },
+// });
 
-AboutTL.add(SecTitleAni("#about"))
-    .add(AboutSecImg(), "-=0.2")
-    .add(AboutSecText(), "<");
+// AboutTL.add(SecTitleAni("#about"))
+//     .add(AboutSecImg(), "-=0.2")
+//     .add(AboutSecText(), "<");
+
+// square circle animation
+// function SQCircleAnimation() {
+//     const tl = gsap.timeline();
+
+//     tl.fromTo(
+//         "#squre-circle .wrapper svg path",
+//         {
+//             rotate: "0deg",
+//         },
+//         {
+//             rotate: "90deg",
+//             duration: 2,
+//             stagger: 0.2,
+//         }
+//     );
+
+//     return tl;
+// }
+
+// SQCircleAnimation()
+
+// my skill section
+function MySkillAnimation() {
+    const Tl = gsap.timeline();
+    const element = [
+        ...document.querySelectorAll("#skills circle"),
+        ...document.querySelectorAll("#skills path"),
+    ];
+
+    // gsap.set(element, {
+    //     opacity: 0,
+    // });
+    // box animation ------------------
+    function Box() {
+        const Boxtl = gsap
+            .timeline({ defaults: { duration: 0.7 } })
+            .from("#skills #Expand-box #box-top", {
+                y: "-100px",
+                opacity: 0,
+                delay: 1,
+            })
+            .from(
+                "#skills #Expand-box #box-left",
+                {
+                    x: "-100px",
+                    opacity: 0,
+                },
+                "<"
+            )
+            .from(
+                "#skills #Expand-box #box-right",
+                {
+                    x: "100px",
+                    opacity: 0,
+                },
+                "<"
+            );
+        return Boxtl;
+    }
+
+    // container circle and childs
+
+    function Childs(selector, pos = "40% 20%") {
+        const tl = gsap.timeline();
+        const element = document.querySelector(`#skills #${selector} circle`);
+        const text = document.querySelector(`#skills #${selector} path`);
+        const box = document.querySelector("#Expand-box");
+        console.log(text);
+        tl.from(element, {
+            transformOrigin: "50% 50%",
+            scale: 0,
+            duration: 0.5,
+        }).from(text, {
+            transformOrigin: "50% 50%",
+            scale: 0,
+            ease: "bounce",
+        });
+
+        return tl;
+    }
+    // Childs('html');
+    const cirSm = "0px 810px";
+    const cirLg = "0px 1550px";
+    function Circle(target, duration = 3, dash) {
+        const CircleTl = gsap
+            .timeline({
+                defaults: {
+                    duration: duration,
+                },
+            })
+            .fromTo(
+                `#skills #ex-circle-${target}`,
+                {
+                    strokeDasharray: `0px ${dash[1]}px`,
+                },
+                {
+                    strokeDasharray: `${dash[0]}px ${dash[1]}px`,
+                }
+            );
+        return CircleTl;
+    }
+
+    Tl.add(Box())
+        .add(Circle(1, 2.5, [810, 810]))
+        .add(Childs("CSS"), "-=2.25")
+        .add(Childs("JS"), "-=1.75")
+        .add(Childs("html"), "-=0.95")
+        .add(Circle(2, 6, [1550, 1550]), "+=0.1")
+        .add(Childs("EXPRESS"), "-=5.905")
+        .add(Childs("BT5"), "-=5.50")
+        .add(Childs("gsap"), "-=5.1")
+        .add(Childs("chart"), "-=4.72")
+        .add(Childs("sql"), "-=4.3")
+        .add(Childs("TAILWIND"), "-=3.85")
+        .add(Childs("GIT"), "-=3.3")
+        .add(Childs("NODE"), "-=2.65")
+        .add(Childs("REACT"), "-=1.65");
+    // GSDevTools.create();
+    return Tl;
+}
+
+const SkillSectionTL = gsap
+    .timeline({
+        scrollTrigger: {
+            trigger: "#skill",
+            start: "top 10%",
+            pin: true,
+            scrub: 1,
+            markers: true
+        },
+    })
+    .add(SecTitleAni("#skill"))
+    .add(MySkillAnimation());
