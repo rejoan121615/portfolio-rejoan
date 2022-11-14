@@ -314,15 +314,27 @@
 #contact {
     height: 100vh;
     margin-top: 32px;
+    @include resp ($xxl) {
+        height: initial;
+    }
+    @include resp ($xxl) {
+        margin-top: 0px;
+    }
     .container {
         height: 100%;
         display: grid;
-        grid-template-rows: 200px auto 50px;
+        grid-template-rows: 200px auto;
+        @include resp ($xxl) {
+            row-gap: 100px;
+        }
     }
     .title {
         position: relative;
         z-index: 50;
         padding-top: 70px;
+        @include resp ($xxl) {
+            padding-top: 0px;
+        }
     }
     .section-title {
         .comma {
@@ -674,13 +686,30 @@ footer {
     text-align: center;
     font-family: kurye;
     color: $mainHeading;
-    div {
-        height: initial;
+    @include resp ($xxl) {
+        margin-top: 100px;
+    }
+    div.footer-container {
+        height: initial!important;
+        display: block!important;
         border-top: 1px solid $mainHeading;
         padding-top: 10px;
         padding-bottom: 10px;
+        @extend .container;
+        @include resp ($xl) {
+            @include py(14px, 14px);
+        }
+        @include resp ($xxl) {
+            @include py(18px, 18px);
+        }
         p {
             height: initial;
+            @include resp ($xl) {
+                font-size: 20px;
+            }
+            @include resp ($xxl) {
+                font-size: 24px;
+            }
         }
     }
 }

@@ -547,7 +547,7 @@ function AnimateProjectBg(selector, index) {
 }
 
 
-projectList.forEach((item, index) => {
-    AnimateProjectCard(item, index);
-    AnimateProjectBg(item, index)
-});
+// projectList.forEach((item, index) => {
+//     AnimateProjectCard(item, index);
+//     AnimateProjectBg(item, index)
+// });
