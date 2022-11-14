@@ -448,15 +448,84 @@ function MySkillAnimation() {
     return Tl;
 }
 
-const SkillSectionTL = gsap
-    .timeline({
+// const SkillSectionTL = gsap
+//     .timeline({
+//         scrollTrigger: {
+//             trigger: "#skill",
+//             start: "top 10%",
+//             pin: true,
+//             scrub: 1,
+//             markers: true
+//         },
+//     })
+//     .add(SecTitleAni("#skill"))
+//     .add(MySkillAnimation());
+
+// project list section ----------------------------------------------
+const projectList = document.querySelectorAll(
+    "#projects .project-wrap .pro-card"
+);
+
+function AnimateProjectCard(selector, index) {
+    const nth = document.querySelector(`.pro-card:nth-child(${index + 1})`);
+    console.log(nth);
+    const title = selector.querySelector(".details h1");
+    const img = selector.querySelector(".details .img-wrap");
+    const bgImg = selector.querySelector(".bg");
+    const link = selector.querySelector(".details .link a");
+    const imgShadow = selector.querySelector(".shadow");
+
+    // console.log(imgShadow);
+    // console.log(title);
+
+    const word = new SplitText(title, {
+        type: "words",
+        wordsClass: "letter-wrap",
+    });
+    const Tl = gsap.timeline({
         scrollTrigger: {
-            trigger: "#skill",
-            start: "top 10%",
-            pin: true,
-            scrub: 1,
-            markers: true
+            trigger: selector,
+            markers: true,
+            start: "bottom 80%",
         },
-    })
-    .add(SecTitleAni("#skill"))
-    .add(MySkillAnimation());
+    });
+
+    Tl.fromTo(
+        selector.querySelectorAll(".letter-wrap"),
+        {
+            y: "50px",
+            opacity: 0,
+        },
+        {
+            y: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: {
+                each: 0.1,
+            },
+        }
+    )
+        .to(imgShadow, {
+            scaleY: "0",
+            ease: "ease-in",
+            duration: 1,
+        })
+        .fromTo(
+            link,
+            {
+                opacity: 0,
+                x: "-50px",
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.5,
+            },
+            "<"
+        );
+    return Tl;
+}
+
+projectList.forEach((item, index) => {
+    AnimateProjectCard(item, index);
+});
