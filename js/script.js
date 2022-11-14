@@ -475,7 +475,7 @@ function AnimateProjectCard(selector, index) {
     const link = selector.querySelector(".details .link a");
     const imgShadow = selector.querySelector(".shadow");
 
-    // console.log(imgShadow);
+    console.log(imgShadow);
     // console.log(title);
 
     const word = new SplitText(title, {
@@ -485,8 +485,7 @@ function AnimateProjectCard(selector, index) {
     const Tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
-            markers: true,
-            start: "bottom 80%",
+            // markers: true,
         },
     });
 
@@ -510,22 +509,45 @@ function AnimateProjectCard(selector, index) {
             ease: "ease-in",
             duration: 1,
         })
-        .fromTo(
+        .from(
             link,
             {
-                opacity: 0,
-                x: "-50px",
-            },
-            {
-                x: 0,
+                scale: 0,
                 opacity: 1,
-                duration: 0.5,
+                duration: 0.6,
             },
             "<"
-        );
+    );
+    
+    // GSDevTools.create()
     return Tl;
 }
 
+function AnimateProjectBg(selector, index) {
+    // const nth = document.querySelector(`.pro-card:nth-child(${index + 1}) .bg`);
+    const bgImg = selector.querySelector(".bg");
+    console.log(bgImg)
+
+    const Tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: selector,
+            markers: true,
+            scrub: true
+        },
+    });
+
+    Tl.fromTo(bgImg, {
+        y: "40%"
+    }, {
+        y: '-30%'
+    })
+
+    // GSDevTools.create()
+    return Tl;
+}
+
+
 projectList.forEach((item, index) => {
     AnimateProjectCard(item, index);
+    AnimateProjectBg(item, index)
 });
