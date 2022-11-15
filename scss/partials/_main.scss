@@ -175,6 +175,7 @@
         }
         circle {
             stroke-width: 35px;
+            opacity: 0;
             // stroke: $mainHeading;
             @include resp($md) {
                 stroke-width: 40px;

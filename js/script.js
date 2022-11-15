@@ -6,10 +6,7 @@ console.log(new LocomotiveScroll());
 gsap.registerPlugin(
     ScrollTrigger,
     SplitText,
-    CSSRulePlugin,
-    GSDevTools,
-    MorphSVGPlugin
-);
+    CSSRulePlugin,);
 
 
 const locoScroll = new LocomotiveScroll({
@@ -142,6 +139,7 @@ function LoadingScreenAnimation() {
 
     tl.set(loaderCircle, {
         strokeDasharray: "0px 1000px",
+        opacity: 1
     })
         .to(loaderCircle[0], {
             strokeDasharray: completeDash,
