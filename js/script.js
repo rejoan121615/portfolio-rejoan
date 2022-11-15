@@ -1,6 +1,12 @@
 console.clear();
 // gsap animation
-gsap.registerPlugin(ScrollTrigger, SplitText, CSSRulePlugin, GSDevTools);
+gsap.registerPlugin(
+    ScrollTrigger,
+    SplitText,
+    CSSRulePlugin,
+    GSDevTools,
+    MorphSVGPlugin
+);
 
 function MenuAnimation() {
     const menuSplitText = new SplitText("#menu li a", { type: "lines" });
@@ -517,8 +523,8 @@ function AnimateProjectCard(selector, index) {
                 duration: 0.6,
             },
             "<"
-    );
-    
+        );
+
     // GSDevTools.create()
     return Tl;
 }
@@ -526,28 +532,160 @@ function AnimateProjectCard(selector, index) {
 function AnimateProjectBg(selector, index) {
     // const nth = document.querySelector(`.pro-card:nth-child(${index + 1}) .bg`);
     const bgImg = selector.querySelector(".bg");
-    console.log(bgImg)
+    console.log(bgImg);
 
     const Tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
             markers: true,
-            scrub: true
+            scrub: true,
         },
     });
 
-    Tl.fromTo(bgImg, {
-        y: "40%"
-    }, {
-        y: '-30%'
-    })
+    Tl.fromTo(
+        bgImg,
+        {
+            y: "40%",
+        },
+        {
+            y: "-30%",
+        }
+    );
 
     // GSDevTools.create()
     return Tl;
 }
 
-
 // projectList.forEach((item, index) => {
 //     AnimateProjectCard(item, index);
 //     AnimateProjectBg(item, index)
 // });
+
+// contact section -----------------------
+
+function Contact() {
+    const contactCard = document.querySelectorAll("#contact .box-btn");
+    // animation
+
+    function animation(select) {
+        const obj = select.querySelector(".object");
+        const arrow = select.querySelector(".arrow");
+        console.log(select.classList);
+        const TL = gsap.timeline();
+
+        TL.to(select, {
+            backgroundColor: "green",
+            duration: 1,
+        }).to(obj, { morphSVG: arrow, duration: 1 });
+
+        return TL;
+    }
+
+    contactCard.forEach((card, index) => {
+        console.log(card);
+        card.onmouseenter = () => {
+            animation(card);
+        };
+        card.onmouseleave = () => {
+            console.log("mouse leave");
+        };
+    });
+}
+
+// Contact();
+
+function Background() {
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#main",
+            start: "center center",
+            end: "+=100%",
+            scrub: true,
+        },
+        defaults: {
+            duration: 1,
+        },
+    })
+        .to(".bg-color-mask .red", {
+            x: "100%",
+            opacity: 0,
+        })
+        .to(".bg-color-mask .yellow", {
+            x: "-100%",
+            opacity: 0,
+        })
+        .to(".bg-color-mask .blue", {
+            x: "100%",
+            scaleX: 3,
+        });
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#about",
+            start: "center center",
+            end: "+=200%",
+            scrub: true,
+        },
+        defaults: {
+            duration: 1,
+        },
+    })
+        .to(".bg-color-mask .blue", {
+            x: "-50%",
+            scaleX: 1.3,
+            y: "25%",
+        })
+        .to(".bg-color-mask .red", {
+            x: "0%",
+            opacity: 1,
+        });
+    
+    
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#projects",
+            start: "top center",
+            end: "+=400%",
+            scrub: true,
+
+        },
+        defaults: {
+            duration: 1,
+        },
+    })
+        .set(".bg-color-mask .item-wrap div", {
+            x: "0%",
+            scale: 1,
+            y: "0%",
+            opacity: 1
+        })
+        .to(".bg-color-mask .item-wrap", {
+            rotate: '360deg',
+            duration: 4
+        });
+    
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#contact",
+            start: "top center",
+            end: "bottom bottom",
+            scrub: true,
+        },
+        defaults: {
+            duration: 1,
+        },
+    })
+        .to(".bg-color-mask .red", {
+            opacity: 0,
+        })
+        .to(".bg-color-mask .blue", {
+            opacity: 0,
+        })
+        .to(".bg-color-mask .yellow", {
+            scaleX: '2'
+        });
+
+    // GSDevTools.create();
+}
+
+Background();

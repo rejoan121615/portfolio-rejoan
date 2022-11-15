@@ -1,0 +1,88 @@
+#contact {
+    height: 100vh;
+    .main-container {
+        .title {
+            align-self: flex-end;
+        }
+        @extend .container;
+        height: 100%;
+        display: grid;
+        grid-template:
+            "title" 200px
+            "content" auto
+            "footer" 60px / 1fr;
+    }
+    .content {
+        display: grid;
+        grid-template: "upwork github facebook" 300px / 1fr 1fr 1fr;
+        column-gap: 35px;
+        align-self: center;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            box-shadow: 0px 0px 20px;
+            border-radius: 30px;
+            transition: background-color 0.5s;
+            &:hover {
+                .object {
+                    fill: white;
+                }
+            }
+            .object {
+            }
+            .arrow {
+                visibility: hidden;
+            }
+        }
+        .upwork {
+            grid-area: upwork;
+            color: $upwork;
+
+            &:hover {
+                background-color: $upwork;
+                .tik {
+                    fill: $upwork;
+                }
+            }
+            svg {
+                width: 130px;
+            }
+        }
+        .github {
+            grid-area: github;
+            color: $github;
+            &:hover {
+                background-color: $github;
+            }
+            svg {
+                width: 110px;
+            }
+        }
+        .facebook {
+            grid-area: facebook;
+            color: $fb;
+            &:hover {
+                background-color: $fb;
+            }
+            svg {
+                width: 110px;
+            }
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    font-family: kurye;
+    color: $mainHeading;
+    div.footer-container {
+        border-top: 1px solid $mainHeading;
+        @extend %center;
+        height: 100%;
+        @extend .container;
+        p {
+        }
+    }
+}
