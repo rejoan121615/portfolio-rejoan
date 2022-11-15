@@ -1,30 +1,30 @@
 @font-face {
   font-family: "brolimo";
-  src: url("../../fonts/BROLIMO-Regular.ttf");
+  src: url("../fonts/BROLIMO-Regular.ttf");
 }
 @font-face {
   font-family: "mak";
-  src: url("../../fonts/MAK.otf");
+  src: url("../fonts/MAK.otf");
 }
 @font-face {
   font-family: "quanty";
-  src: url("../../fonts/Quanty.otf");
+  src: url("../fonts/Quanty.otf");
 }
 @font-face {
   font-family: "kurye";
-  src: url("../../fonts/Kurye-Light.otf");
+  src: url("../fonts/Kurye-Light.otf");
 }
 @font-face {
   font-family: "kuryeItalic";
-  src: url("../../fonts/Kurye-LightItalic.otf");
+  src: url("../fonts/Kurye-LightItalic.otf");
 }
 @font-face {
   font-family: "roboto";
-  src: url("../../fonts/Roboto-Black.ttf");
+  src: url("../fonts/Roboto-Black.ttf");
 }
 @font-face {
   font-family: "sauber";
-  src: url("../../fonts/Sauber.otf");
+  src: url("../fonts/Sauber.otf");
 }
 * {
   margin: 0;
