@@ -181,10 +181,10 @@ function MainScreenAssetsAnimation() {
 
 const MasterTl = gsap.timeline();
 
-// MasterTl.add(LoadingScreenAnimation()).add(
-//     MainScreenAssetsAnimation(),
-//     "-=0.3"
-// );
+MasterTl.add(LoadingScreenAnimation()).add(
+    MainScreenAssetsAnimation(),
+    "-=0.3"
+);
 
 // snap animation ------------------------------
 
@@ -208,14 +208,8 @@ function SecTitleAni(selector) {
         type: "chars",
         charsClass: "letter",
     });
-    const gradient = new SplitText(`${selector} .section-title .gradient`, {
-        type: "chars",
-        charsClass: "grd-letter",
-    });
-    console.log(letter);
-    console.log(gradient);
     return gsap.timeline().fromTo(
-        [letter.chars, gradient.chars],
+        [letter.chars, document.querySelectorAll(`${selector} .gradient`)],
         {
             y: "150%",
             rotate: "30deg",
@@ -252,7 +246,6 @@ function AboutSecImg() {
     return tl;
 }
 
-// AboutSecImg();
 
 function AboutSecText() {
     const word = new SplitText("#about .container .discription .text", {
@@ -312,26 +305,26 @@ function AboutSecText() {
                     y: "-100%",
                 },
             },
-            "+=0.2"
+            "+=1"
         );
 
     return tl;
 }
 
-// AboutSecText();
 
-// const AboutTL = gsap.timeline({
-//     scrollTrigger: {
-//         trigger: "#about",
-//         start: "top 10%",
-//         pin: true,
-//         scrub: true,
-//     },
-// });
+const AboutTL = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 5%",
+        end: "center 10%" ,
+        pin: true,
+        scrub: true,
+    },
+});
 
-// AboutTL.add(SecTitleAni("#about"))
-//     .add(AboutSecImg(), "-=0.2")
-//     .add(AboutSecText(), "<");
+AboutTL.add(SecTitleAni("#about"))
+    .add(AboutSecImg(), "-=0.2")
+    .add(AboutSecText(), "<");
 
 // square circle animation
 // function SQCircleAnimation() {
@@ -354,7 +347,7 @@ function AboutSecText() {
 
 // SQCircleAnimation()
 
-// my skill section
+// my skill section -----------------------
 function MySkillAnimation() {
     const Tl = gsap.timeline();
     const element = [
@@ -454,18 +447,17 @@ function MySkillAnimation() {
     return Tl;
 }
 
-// const SkillSectionTL = gsap
-//     .timeline({
-//         scrollTrigger: {
-//             trigger: "#skill",
-//             start: "top 10%",
-//             pin: true,
-//             scrub: 1,
-//             markers: true
-//         },
-//     })
-//     .add(SecTitleAni("#skill"))
-//     .add(MySkillAnimation());
+const SkillSectionTL = gsap
+    .timeline({
+        scrollTrigger: {
+            trigger: "#skill",
+            start: "top 10%",
+            pin: true,
+            scrub: true,
+        },
+    })
+    .add(SecTitleAni("#skill"))
+    .add(MySkillAnimation());
 
 // project list section ----------------------------------------------
 const projectList = document.querySelectorAll(
@@ -491,7 +483,7 @@ function AnimateProjectCard(selector, index) {
     const Tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
-            // markers: true,
+            start: 'center 70%',
         },
     });
 
@@ -537,7 +529,6 @@ function AnimateProjectBg(selector, index) {
     const Tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
-            markers: true,
             scrub: true,
         },
     });
@@ -556,41 +547,24 @@ function AnimateProjectBg(selector, index) {
     return Tl;
 }
 
-// projectList.forEach((item, index) => {
-//     AnimateProjectCard(item, index);
-//     AnimateProjectBg(item, index)
-// });
+projectList.forEach((item, index) => {
+    AnimateProjectCard(item, index);
+    AnimateProjectBg(item, index)
+});
 
 // contact section -----------------------
 
-function Contact() {
-    const contactCard = document.querySelectorAll("#contact .box-btn");
-    // animation
-
-    function animation(select) {
-        const obj = select.querySelector(".object");
-        const arrow = select.querySelector(".arrow");
-        console.log(select.classList);
-        const TL = gsap.timeline();
-
-        TL.to(select, {
-            backgroundColor: "green",
-            duration: 1,
-        }).to(obj, { morphSVG: arrow, duration: 1 });
-
-        return TL;
-    }
-
-    contactCard.forEach((card, index) => {
-        console.log(card);
-        card.onmouseenter = () => {
-            animation(card);
-        };
-        card.onmouseleave = () => {
-            console.log("mouse leave");
-        };
+gsap.timeline({
+    scrollTrigger: {
+        trigger: "#contact",
+    },
+})
+    .add(SecTitleAni("#contact"))
+    .from("#contact .content a", {
+        boxShadow: "0px 0px 0px",
+        border: "1px solid #a0a0a0",
+        duration: 1,
     });
-}
 
 // Contact();
 
@@ -689,3 +663,6 @@ function Background() {
 }
 
 Background();
+
+
+

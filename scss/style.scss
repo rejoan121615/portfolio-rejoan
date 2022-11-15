@@ -322,9 +322,6 @@ footer {
     text-align: center;
     font-family: kurye;
     color: $mainHeading;
-    @include resp ($xxl) {
-        margin-top: 100px;
-    }
     div.footer-container {
         height: initial!important;
         display: block!important;
@@ -334,9 +331,6 @@ footer {
         @extend .container;
         @include resp ($xl) {
             @include py(14px, 14px);
-        }
-        @include resp ($xxl) {
-            @include py(18px, 18px);
         }
         p {
             height: initial;

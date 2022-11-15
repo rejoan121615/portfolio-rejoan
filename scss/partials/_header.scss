@@ -20,6 +20,9 @@
         }
         @include resp ($mxl) {
             height: 80px;
+            width: initial;
+            padding-left: 20px;
+            padding-right: 20px;
         }
         .brand {
             display: inline-block;
