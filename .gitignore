@@ -1,4 +1,4 @@
 node_modules/
 types/
-config.json
-css/
+jsconfig.json
+package-lock.json
