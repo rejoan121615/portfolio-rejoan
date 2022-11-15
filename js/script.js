@@ -1,4 +1,7 @@
-console.clear();
+console.log(new LocomotiveScroll());
+
+
+
 // gsap animation
 gsap.registerPlugin(
     ScrollTrigger,
@@ -7,6 +10,47 @@ gsap.registerPlugin(
     GSDevTools,
     MorphSVGPlugin
 );
+
+
+const locoScroll = new LocomotiveScroll({
+    el: document.querySelector(".smooth-scroll"),
+    smooth: true,
+
+    // for tablet smooth
+    tablet: { smooth: true },
+
+    // for mobile
+    smartphone: { smooth: true },
+});
+
+locoScroll.on("scroll", ScrollTrigger.update);
+
+ScrollTrigger.scrollerProxy(".smooth-scroll", {
+    scrollTop(value) {
+        return arguments.length
+            ? locoScroll.scrollTo(value, 0, 0)
+            : locoScroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+        return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+        };
+    },
+
+    // follwoing line is not required to work pinning on touch screen
+
+    /* pinType: document.querySelector(".smooth-scroll").style.transform
+    ? "transform"
+    : "fixed"*/
+});
+
+
+
+
+
 
 function MenuAnimation() {
     const menuSplitText = new SplitText("#menu li a", { type: "lines" });
@@ -263,7 +307,6 @@ function AboutSecText() {
     //     type: 'line',
     //     charsClass: 'img-wrap'
     // });
-    // console.log('image', img)
     const tl = gsap.timeline();
 
     tl.fromTo(
@@ -316,9 +359,10 @@ const AboutTL = gsap.timeline({
     scrollTrigger: {
         trigger: "#about",
         start: "top 5%",
-        end: "center 10%" ,
+        end: "center 10%",
         pin: true,
         scrub: true,
+        scroller: ".smooth-scroll",
     },
 });
 
@@ -393,7 +437,6 @@ function MySkillAnimation() {
         const element = document.querySelector(`#skills #${selector} circle`);
         const text = document.querySelector(`#skills #${selector} path`);
         const box = document.querySelector("#Expand-box");
-        console.log(text);
         tl.from(element, {
             transformOrigin: "50% 50%",
             scale: 0,
@@ -454,6 +497,7 @@ const SkillSectionTL = gsap
             start: "top 10%",
             pin: true,
             scrub: true,
+            scroller: ".smooth-scroll",
         },
     })
     .add(SecTitleAni("#skill"))
@@ -466,15 +510,14 @@ const projectList = document.querySelectorAll(
 
 function AnimateProjectCard(selector, index) {
     const nth = document.querySelector(`.pro-card:nth-child(${index + 1})`);
-    console.log(nth);
     const title = selector.querySelector(".details h1");
     const img = selector.querySelector(".details .img-wrap");
     const bgImg = selector.querySelector(".bg");
     const link = selector.querySelector(".details .link a");
     const imgShadow = selector.querySelector(".shadow");
 
-    console.log(imgShadow);
-    // console.log(title);
+
+
 
     const word = new SplitText(title, {
         type: "words",
@@ -483,7 +526,8 @@ function AnimateProjectCard(selector, index) {
     const Tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
-            start: 'center 70%',
+            start: "center 70%",
+            scroller: ".smooth-scroll",
         },
     });
 
@@ -524,12 +568,12 @@ function AnimateProjectCard(selector, index) {
 function AnimateProjectBg(selector, index) {
     // const nth = document.querySelector(`.pro-card:nth-child(${index + 1}) .bg`);
     const bgImg = selector.querySelector(".bg");
-    console.log(bgImg);
 
     const Tl = gsap.timeline({
         scrollTrigger: {
             trigger: selector,
             scrub: true,
+            scroller: ".smooth-scroll",
         },
     });
 
@@ -557,6 +601,7 @@ projectList.forEach((item, index) => {
 gsap.timeline({
     scrollTrigger: {
         trigger: "#contact",
+        scroller: ".smooth-scroll",
     },
 })
     .add(SecTitleAni("#contact"))
@@ -575,6 +620,7 @@ function Background() {
             start: "center center",
             end: "+=100%",
             scrub: true,
+            scroller: ".smooth-scroll",
         },
         defaults: {
             duration: 1,
@@ -599,6 +645,7 @@ function Background() {
             start: "center center",
             end: "+=200%",
             scrub: true,
+            scroller: ".smooth-scroll",
         },
         defaults: {
             duration: 1,
@@ -621,7 +668,7 @@ function Background() {
             start: "top center",
             end: "+=400%",
             scrub: true,
-
+            scroller: ".smooth-scroll",
         },
         defaults: {
             duration: 1,
@@ -631,11 +678,11 @@ function Background() {
             x: "0%",
             scale: 1,
             y: "0%",
-            opacity: 1
+            opacity: 1,
         })
         .to(".bg-color-mask .item-wrap", {
-            rotate: '360deg',
-            duration: 4
+            rotate: "360deg",
+            duration: 4,
         });
     
     gsap.timeline({
@@ -644,6 +691,7 @@ function Background() {
             start: "top center",
             end: "bottom bottom",
             scrub: true,
+            scroller: ".smooth-scroll",
         },
         defaults: {
             duration: 1,
@@ -656,7 +704,7 @@ function Background() {
             opacity: 0,
         })
         .to(".bg-color-mask .yellow", {
-            scaleX: '2'
+            scaleX: "2",
         });
 
     // GSDevTools.create();
@@ -665,4 +713,7 @@ function Background() {
 Background();
 
 
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+ScrollTrigger.refresh();
 
