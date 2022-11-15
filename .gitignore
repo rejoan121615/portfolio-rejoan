@@ -1,5 +1,6 @@
-view/
-css/
 node_modules/
 types/
 config.json
+scss/
+package.json
+package-lock.json
