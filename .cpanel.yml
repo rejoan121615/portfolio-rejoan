@@ -3,7 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/pzttsfca/public_html/
     - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp css/* $DEPLOYPATH
-    - /bin/cp fonts/* $DEPLOYPATH
-    - /bin/cp images/* $DEPLOYPATH
-    - /bin/cp js/* $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R fonts $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
